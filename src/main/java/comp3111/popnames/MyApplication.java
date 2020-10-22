@@ -47,7 +47,9 @@ public class MyApplication extends Application {
    		VBox root = (VBox) loader.load();
    		Scene scene =  new Scene(root);
    		stage.setScene(scene);
-   		stage.setTitle("Popular Names");
+   		/*Trivial change*/
+   		stage.setTitle("Team T-42: Popular Names");
+
    		stage.show();
 	}
 
