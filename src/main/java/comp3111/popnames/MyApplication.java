@@ -49,7 +49,6 @@ public class MyApplication extends Application {
    		stage.setScene(scene);
    		/*Trivial change*/
    		stage.setTitle("Team T-42: Popular Names");
-   		stage.show();
 	}
 
 	/**
