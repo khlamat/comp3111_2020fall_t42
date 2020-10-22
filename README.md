@@ -12,6 +12,6 @@ Task 2 & Task 5
 
 3. Luk Ka Ho
 
-email: khlukab | github: ImCombo | dev branch: lkh_development
+email: khlukab | github: ImCombo | dev branch: lkh_feature1
 
 Task 1 & Task 4
