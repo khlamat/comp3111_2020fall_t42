@@ -258,6 +258,13 @@ public class Controller {
     			String name = AnalyzeNames.getName(i, j, gender);/*1945:3782*/
     			if (name.equals("information on the name at the specified rank is not available")) 
     				break;
+    			oReport += String.format("%-15s\t", name);
+    		}
+    		oReport += String.format("\n");
+    	}
+    	for (int i = startingYear; i <= endingYear; i++) {
+    		for (int j = 1; j < 100; j++) {
+    			String name = AnalyzeNames.getName(i, j, gender);
     			boolean totalIsFound = false;
     			for (int k=0; k<totalLength; k++) {
     				if (totalName[k].equals(name)) {
@@ -265,14 +272,12 @@ public class Controller {
     					totalIsFound = true;
     				}
     			}
-    			if (!totalIsFound && totalLength<totalMax && AnalyzeNames.getNumberOfBorn(i, name, gender)>10) {
+    			if (!totalIsFound) {
     				totalName[totalLength] = name;
     				totalNumber[totalLength] = AnalyzeNames.getNumberOfBorn(i, name, gender);
     				totalLength++;
     			}
-    			oReport += String.format("%-15s\t", name);
     		}
-    		oReport += String.format("\n");
     	}
     	int temp = 0;
     	for (int i=0; i<totalLength; i++) {

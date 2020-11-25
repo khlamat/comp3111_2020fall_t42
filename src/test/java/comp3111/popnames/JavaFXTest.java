@@ -29,7 +29,7 @@ public class JavaFXTest extends ApplicationTest {
    		s = scene;
 		t = (TextArea)s.lookup("#textAreaConsole");
 	}
-
+	
 	@Test
 	public void testButtonRankTrue() {	
 		clickOn("#tabTaskZero");
@@ -217,19 +217,24 @@ public class JavaFXTest extends ApplicationTest {
 				"1945\tMary           \t\n" + 
 				"Over the period 1945 to 1945, Mary for F has hold the top spot most often for a total of 59284 times."));		
     }
-	/*
+	
 	@Test
-	public void testLargeTopN() {
+	public void testMostUsedName() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
 		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
-		startingYear.setText("1941");
+		startingYear.setText("1952");
 		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
-		endingYear.setText("2077");
+		endingYear.setText("1956");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("EndingYear is not in [1880, 2019]."));
+		assertTrue(s1.equals("Year\tTop 1          \t\n" + 
+				"1952\tJames          \t\n" + 
+				"1953\tRobert         \t\n" + 
+				"1954\tMichael        \t\n" + 
+				"1955\tMichael        \t\n" + 
+				"1956\tMichael        \t\n" + 
+				"Over the period 1952 to 1956, Michael for M has hold the top spot most often for a total of 430587 times."));
 	}
-	*/
 }
