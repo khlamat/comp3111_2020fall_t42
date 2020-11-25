@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AnalyzeNamesTest {
-	/*
+	
     @Test 
     public void testGetRankNotFound() {
     	AnalyzeNames a = new AnalyzeNames();
@@ -53,5 +53,5 @@ public class AnalyzeNamesTest {
 		int number = a.getNumberOfBorn(1879, "Dave", "M");
     	assertEquals(-1, number);
 	}
-	*/
+	
 }

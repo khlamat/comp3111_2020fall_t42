@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
 public class JavaFXTest extends ApplicationTest {
-/*
+
 	private Scene s;
 	private TextArea t;
 	
@@ -63,8 +63,8 @@ public class JavaFXTest extends ApplicationTest {
 		String s = t.getText();
 		assertTrue(s.equals("David"));
 	}
-	*/
-	/* Task 1 Test*//*
+	
+	/* Task 1 Test*/
 	@Test
 	public void testDefaultInput() {
 		clickOn("#tabReport1");
@@ -200,5 +200,5 @@ public class JavaFXTest extends ApplicationTest {
 		String s1 = t.getText();
 		assertTrue(s1.equals("EndingYear should not be less than StartingYear."));
 	}
-	*/
+	
 }

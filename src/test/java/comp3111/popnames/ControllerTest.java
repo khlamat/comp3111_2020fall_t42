@@ -4,6 +4,5 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ControllerTest {
-	/*Task 1 Test*/
-		
+	
 }
