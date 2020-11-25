@@ -5,10 +5,14 @@ package comp3111.popnames;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern;
+/*https://www.geeksforgeeks.org/check-given-string-valid-number-integer-floating-point-java-set-2-regular-expression-approach/*/
 
 public class Controller {
 
@@ -43,8 +47,23 @@ public class Controller {
     private Tab tabReport1;
 
     @FXML
+    private TextField task1TopN;
+
+    @FXML
+    private RadioButton task1M;
+
+    @FXML
     private ToggleGroup T1;
 
+    @FXML
+    private TextField task1EndingYear;
+
+    @FXML
+    private TextField task1StartingYear;
+
+    @FXML
+    private Button task1Report;
+    
     @FXML
     private Tab tabReport2;
 
@@ -154,6 +173,111 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
-
+    @FXML
+    void dotask1Report() {
+    	String oReport = "";
+    	String gender = "";
+    	String regex = "[+-]?[0-9]+";/*https://www.geeksforgeeks.org/check-given-string-valid-number-integer-floating-point-java-set-2-regular-expression-approach/*/
+    	Pattern p = Pattern.compile(regex);
+    	Matcher m;
+    	m = p.matcher(task1TopN.getText());
+    	if (task1TopN.getText().isEmpty()) {
+    		oReport = String.format("Top N is Empty.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (!(m.find() && m.group().equals(task1TopN.getText()))){
+    		oReport = String.format("Top N is not an integer.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (Integer.parseInt(task1TopN.getText())<1) {
+    		oReport = String.format("Top N is not positive.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	int topN = Integer.parseInt(task1TopN.getText());
+    	m = p.matcher(task1StartingYear.getText());
+    	if (task1StartingYear.getText().isEmpty()) {
+    		oReport = String.format("StartingYear is Empty.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
+    		oReport = String.format("StaringYear is not an integer.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (Integer.parseInt(task1StartingYear.getText())<1880 || Integer.parseInt(task1StartingYear.getText())>2019) {
+    		oReport = String.format("StartingYear is not in [1880, 2019].");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	int startingYear = Integer.parseInt(task1StartingYear.getText());
+    	m = p.matcher(task1EndingYear.getText());
+    	if (task1EndingYear.getText().isEmpty()) {
+    		oReport = String.format("EndingYear is Empty.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (!(m.find() && m.group().equals(task1EndingYear.getText()))){
+    		oReport = String.format("EndingYear is not an integer.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
+    		oReport = String.format("StartingYear is not in [1880, 2019].");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	if (Integer.parseInt(task1EndingYear.getText())<startingYear) {
+    		oReport = String.format("EndingYear should not be less than StartingYear.");
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	int endingYear = Integer.parseInt(task1EndingYear.getText());
+    	if (task1M.isSelected())
+    		gender = "M";
+    	else
+    		gender = "F";
+    	int totalMax = 20000;
+    	String [] totalName = new String [totalMax];
+    	int [] totalNumber = new int [totalMax];
+    	int totalLength = 0;
+    	oReport = String.format("Year\t");
+    	for (int i=1; i<=topN; i++) {
+    		oReport += String.format("Top %-11d\t", i);
+    	}
+    	oReport += String.format("\n");
+    	for (int i=startingYear; i<=endingYear; i++) {
+    		oReport += String.format("%4d\t", i);
+    		for (int j=1; j<=topN; j++) {
+    			String name = AnalyzeNames.getName(i, j, gender);/*1945:3782*/
+    			if (name.equals("information on the name at the specified rank is not available")) 
+    				break;
+    			boolean totalIsFound = false;
+    			for (int k=0; k<totalLength; k++) {
+    				if (totalName[k].equals(name)) {
+    					totalNumber[k] += AnalyzeNames.getNumberOfBorn(i, name, gender);
+    					totalIsFound = true;
+    				}
+    			}
+    			if (!totalIsFound && totalLength<totalMax && AnalyzeNames.getNumberOfBorn(i, name, gender)>10) {
+    				totalName[totalLength] = name;
+    				totalNumber[totalLength] = AnalyzeNames.getNumberOfBorn(i, name, gender);
+    				totalLength++;
+    			}
+    			oReport += String.format("%-15s\t", name);
+    		}
+    		oReport += String.format("\n");
+    	}
+    	int temp = 0;
+    	for (int i=0; i<totalLength; i++) {
+    		if (totalNumber[i]>totalNumber[temp])
+    			temp = i;
+    	}
+    	oReport += String.format("Over the period %d to %d, %s for %s has hold the top spot most often for a total of %s times.", startingYear, endingYear, totalName[temp], gender, totalNumber[temp]);
+    	textAreaConsole.setText(oReport);
+    }
 }
 

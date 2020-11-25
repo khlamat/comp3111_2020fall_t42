@@ -93,5 +93,25 @@ public class AnalyzeNames {
 	     else
 	     	return "information on the name at the specified rank is not available";
 	 }
+	 
+	 public static int getNumberOfBorn(int year, String name, String gender) {
+	     boolean found = false;
+	     int oNumber = 0;
+	     if (year >= 1880 && year <= 2019) {
+		     for (CSVRecord rec : getFileParser(year)) {
+		         if (rec.get(1).equals(gender)) {
+		             if (rec.get(0).equals(name)) {
+		             	found = true;
+		             	oNumber = Integer.parseInt(rec.get(2));
+		             	break;
+		             }
+		         }
+		     }
+	     }
+	     if (found)
+	     	return oNumber;
+	     else
+	     	return -1;
+	 }
  
 }
