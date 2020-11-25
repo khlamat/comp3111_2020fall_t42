@@ -184,7 +184,7 @@ public class Controller {
     	if (task1TopN.getText().isEmpty()) {
     		oReport = String.format("Top N is Empty.");
     		textAreaConsole.setText(oReport);
-    		return;
+    		return ;
     	}
     	if (!(m.find() && m.group().equals(task1TopN.getText()))){
     		oReport = String.format("Top N is not an integer.");
@@ -204,7 +204,7 @@ public class Controller {
     		return;
     	}
     	if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
-    		oReport = String.format("StaringYear is not an integer.");
+    		oReport = String.format("StartingYear is not an integer.");
     		textAreaConsole.setText(oReport);
     		return;
     	}
@@ -226,7 +226,7 @@ public class Controller {
     		return;
     	}
     	if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
-    		oReport = String.format("StartingYear is not in [1880, 2019].");
+    		oReport = String.format("EndingYear is not in [1880, 2019].");
     		textAreaConsole.setText(oReport);
     		return;
     	}

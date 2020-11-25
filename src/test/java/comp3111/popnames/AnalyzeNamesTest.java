@@ -1,10 +1,10 @@
-/*package comp3111.popnames;
+package comp3111.popnames;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AnalyzeNamesTest {
-	
+	/*
     @Test 
     public void testGetRankNotFound() {
     	AnalyzeNames a = new AnalyzeNames();
@@ -39,6 +39,19 @@ public class AnalyzeNamesTest {
     	String name = a.getName(2019, 2192, "F");
     	assertTrue(name.equals("Desire"));
     }
-
+    
+    @Test
+	public void testNumberOfBorn() {
+    	AnalyzeNames a = new AnalyzeNames();
+    	int number = a.getNumberOfBorn(1880, "Dave", "M");
+    	assertEquals(131, number);
+    }
+	
+	@Test
+	public void testNumberOfBornWithInvalidYear() {
+		AnalyzeNames a = new AnalyzeNames();
+		int number = a.getNumberOfBorn(1879, "Dave", "M");
+    	assertEquals(-1, number);
+	}
+	*/
 }
-*/
