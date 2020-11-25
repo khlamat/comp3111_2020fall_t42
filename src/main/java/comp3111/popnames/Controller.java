@@ -51,6 +51,9 @@ public class Controller {
 
     @FXML
     private RadioButton task1M;
+    
+    @FXML
+    private RadioButton task1F;
 
     @FXML
     private ToggleGroup T1;
@@ -184,7 +187,7 @@ public class Controller {
     	if (task1TopN.getText().isEmpty()) {
     		oReport = String.format("Top N is Empty.");
     		textAreaConsole.setText(oReport);
-    		return;
+    		return ;
     	}
     	if (!(m.find() && m.group().equals(task1TopN.getText()))){
     		oReport = String.format("Top N is not an integer.");
@@ -204,7 +207,7 @@ public class Controller {
     		return;
     	}
     	if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
-    		oReport = String.format("StaringYear is not an integer.");
+    		oReport = String.format("StartingYear is not an integer.");
     		textAreaConsole.setText(oReport);
     		return;
     	}
@@ -226,7 +229,7 @@ public class Controller {
     		return;
     	}
     	if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
-    		oReport = String.format("StartingYear is not in [1880, 2019].");
+    		oReport = String.format("EndingYear is not in [1880, 2019].");
     		textAreaConsole.setText(oReport);
     		return;
     	}
@@ -255,6 +258,13 @@ public class Controller {
     			String name = AnalyzeNames.getName(i, j, gender);/*1945:3782*/
     			if (name.equals("information on the name at the specified rank is not available")) 
     				break;
+    			oReport += String.format("%-15s\t", name);
+    		}
+    		oReport += String.format("\n");
+    	}
+    	for (int i = startingYear; i <= endingYear; i++) {
+    		for (int j = 1; j < 100; j++) {
+    			String name = AnalyzeNames.getName(i, j, gender);
     			boolean totalIsFound = false;
     			for (int k=0; k<totalLength; k++) {
     				if (totalName[k].equals(name)) {
@@ -262,14 +272,12 @@ public class Controller {
     					totalIsFound = true;
     				}
     			}
-    			if (!totalIsFound && totalLength<totalMax && AnalyzeNames.getNumberOfBorn(i, name, gender)>10) {
+    			if (!totalIsFound) {
     				totalName[totalLength] = name;
     				totalNumber[totalLength] = AnalyzeNames.getNumberOfBorn(i, name, gender);
     				totalLength++;
     			}
-    			oReport += String.format("%-15s\t", name);
     		}
-    		oReport += String.format("\n");
     	}
     	int temp = 0;
     	for (int i=0; i<totalLength; i++) {
