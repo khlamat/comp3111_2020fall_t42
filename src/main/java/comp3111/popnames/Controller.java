@@ -51,6 +51,9 @@ public class Controller {
 
     @FXML
     private RadioButton task1M;
+    
+    @FXML
+    private RadioButton task1F;
 
     @FXML
     private ToggleGroup T1;

@@ -30,7 +30,6 @@ public class JavaFXTest extends ApplicationTest {
 		t = (TextArea)s.lookup("#textAreaConsole");
 	}
 
-    
 	@Test
 	public void testButtonRankTrue() {	
 		clickOn("#tabTaskZero");
@@ -63,10 +62,9 @@ public class JavaFXTest extends ApplicationTest {
 		String s = t.getText();
 		assertTrue(s.equals("David"));
 	}
-	
 	/* Task 1 Test*/
 	@Test
-	public void testDefaultInput() {
+	public void testTask1DefaultInput() {
 		clickOn("#tabReport1");
 		clickOn("#task1Report");
 		String s1 = t.getText();
@@ -80,7 +78,7 @@ public class JavaFXTest extends ApplicationTest {
     }
 	
 	@Test
-	public void testTopNIsEmpty() {
+	public void testTask1TopNIsEmpty() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("");
@@ -90,7 +88,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testTopNIsNotInteger() {
+	public void testTask1TopNIsNotInteger() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("@");
@@ -100,7 +98,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testTopNIsNotPositive() {
+	public void testTask1TopNIsNotPositive() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("-10");
@@ -110,7 +108,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testStartingYearIsEmpty() {
+	public void testTask1StartingYearIsEmpty() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -122,7 +120,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testStartingYearIsNotInteger() {
+	public void testTask1StartingYearIsNotInteger() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -134,7 +132,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testStartingYearIsNotInRange() {
+	public void testTask1StartingYearIsNotInRange() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -146,7 +144,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testEndingYearIsEmpty() {
+	public void testTask1EndingYearIsEmpty() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -160,7 +158,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testEndingYearIsNotInteger() {
+	public void testTask1EndingYearIsNotInteger() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -174,7 +172,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testEndingYearIsNotInRange() {
+	public void testTask1EndingYearIsNotInRange() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -188,7 +186,7 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testEndingYearIsSmallerThanStartingYear() {
+	public void testTask1EndingYearIsSmallerThanStartingYear() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
@@ -201,4 +199,37 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("EndingYear should not be less than StartingYear."));
 	}
 	
+	@Test
+	public void testTask1Female() {
+		clickOn("#tabReport1");
+		RadioButton task1M = (RadioButton)s.lookup("#task1M");
+		task1M.setSelected(false);
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("1");
+		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
+		startingYear.setText("1945");
+		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
+		endingYear.setText("1945");
+		sleep(1000);
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("Year\tTop 1          \t\n" + 
+				"1945\tMary           \t\n" + 
+				"Over the period 1945 to 1945, Mary for F has hold the top spot most often for a total of 59284 times."));		
+    }
+	/*
+	@Test
+	public void testLargeTopN() {
+		clickOn("#tabReport1");
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("1");
+		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
+		startingYear.setText("1941");
+		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
+		endingYear.setText("2077");
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("EndingYear is not in [1880, 2019]."));
+	}
+	*/
 }
