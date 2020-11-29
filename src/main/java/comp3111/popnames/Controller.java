@@ -197,7 +197,7 @@ public class Controller {
     String task1InputCheck() {
     	String oReport = "";
     	boolean startingYearValid = false;
-    	String regex = "[+-]?[0-9]+";/*https://www.geeksforgeeks.org/check-given-string-valid-number-integer-floating-point-java-set-2-regular-expression-approach/*/
+    	String regex = "[+-]?[0-9]+";
     	Pattern p = Pattern.compile(regex);
     	Matcher m;
     	m = p.matcher(task1TopN.getText());
@@ -315,17 +315,17 @@ public class Controller {
     	Matcher m;
     	String iDadName = task4iDadName.getText();
     	m = pName.matcher(iDadName);
-    	if (task4iDadName.getText().isEmpty()) {
+    	if (iDadName.isEmpty()) {
     		oReport += String.format("Male Name is Empty.\n");
     		
     	}
     	else if (!(m.find() && m.group().equals(iDadName))) {
     		oReport += String.format("Male Name is invalid.\n");
     	}
-    	String iMomName = task4iDadName.getText();
+    	String iMomName = task4iMomName.getText();
     	m = pName.matcher(iMomName);
     	if (iMomName.isEmpty()) {
-    		oReport += String.format("Male Name is Empty.\n");
+    		oReport += String.format("Female Name is Empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(iMomName))) {
     		oReport += String.format("Female Name is invalid.\n");
