@@ -81,6 +81,24 @@ public class Controller {
 
     @FXML
     private Tab tabApp1;
+    
+    @FXML
+    private Button application1Reoprt;
+
+    @FXML
+    private TextField task4iDadName;
+
+    @FXML
+    private TextField task4iMomName;
+
+    @FXML
+    private TextField task4iDadYOB;
+
+    @FXML
+    private TextField task4iMomYOB;
+
+    @FXML
+    private TextField task4iVintageYear;
 
     @FXML
     private Tab tabApp2;
@@ -176,68 +194,56 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
-    @FXML
-    void dotask1Report() {
+    String task1InputCheck() {
     	String oReport = "";
-    	String gender = "";
-    	String regex = "[+-]?[0-9]+";/*https://www.geeksforgeeks.org/check-given-string-valid-number-integer-floating-point-java-set-2-regular-expression-approach/*/
+    	boolean startingYearValid = false;
+    	String regex = "[+-]?[0-9]+";
     	Pattern p = Pattern.compile(regex);
     	Matcher m;
     	m = p.matcher(task1TopN.getText());
     	if (task1TopN.getText().isEmpty()) {
-    		oReport = String.format("Top N is Empty.");
-    		textAreaConsole.setText(oReport);
-    		return ;
+    		oReport += String.format("Top N is Empty.\n");
     	}
-    	if (!(m.find() && m.group().equals(task1TopN.getText()))){
-    		oReport = String.format("Top N is not an integer.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (!(m.find() && m.group().equals(task1TopN.getText()))){
+    		oReport += String.format("Top N is not an integer.\n");
     	}
-    	if (Integer.parseInt(task1TopN.getText())<1) {
-    		oReport = String.format("Top N is not positive.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (Integer.parseInt(task1TopN.getText())<1) {
+    		oReport += String.format("Top N is not positive.\n");
     	}
-    	int topN = Integer.parseInt(task1TopN.getText());
     	m = p.matcher(task1StartingYear.getText());
     	if (task1StartingYear.getText().isEmpty()) {
-    		oReport = String.format("StartingYear is Empty.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    		oReport += String.format("StartingYear is Empty.\n");
     	}
-    	if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
-    		oReport = String.format("StartingYear is not an integer.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
+    		oReport += String.format("StartingYear is not an integer.\n");
     	}
-    	if (Integer.parseInt(task1StartingYear.getText())<1880 || Integer.parseInt(task1StartingYear.getText())>2019) {
-    		oReport = String.format("StartingYear is not in [1880, 2019].");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (Integer.parseInt(task1StartingYear.getText())<1880 || Integer.parseInt(task1StartingYear.getText())>2019) {
+    		oReport += String.format("StartingYear is not in [1880, 2019].\n");
     	}
-    	int startingYear = Integer.parseInt(task1StartingYear.getText());
+    	else {
+    		startingYearValid = true;
+    	}
     	m = p.matcher(task1EndingYear.getText());
     	if (task1EndingYear.getText().isEmpty()) {
-    		oReport = String.format("EndingYear is Empty.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    		oReport += String.format("EndingYear is Empty.\n");
     	}
-    	if (!(m.find() && m.group().equals(task1EndingYear.getText()))){
-    		oReport = String.format("EndingYear is not an integer.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (!(m.find() && m.group().equals(task1EndingYear.getText()))){
+    		oReport += String.format("EndingYear is not an integer.\n");
     	}
-    	if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
-    		oReport = String.format("EndingYear is not in [1880, 2019].");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
+    		oReport += String.format("EndingYear is not in [1880, 2019].\n");
     	}
-    	if (Integer.parseInt(task1EndingYear.getText())<startingYear) {
-    		oReport = String.format("EndingYear should not be less than StartingYear.");
-    		textAreaConsole.setText(oReport);
-    		return;
+    	else if (startingYearValid && Integer.parseInt(task1EndingYear.getText())<Integer.parseInt(task1StartingYear.getText())) {
+    		oReport += String.format("EndingYear should not be less than StartingYear.\n");
     	}
+    	return oReport;
+    }
+    
+    String task1Result() {
+    	String oReport = "";
+    	String gender = "";
+    	int topN = Integer.parseInt(task1TopN.getText());
+    	int startingYear = Integer.parseInt(task1StartingYear.getText());
     	int endingYear = Integer.parseInt(task1EndingYear.getText());
     	if (task1M.isSelected())
     		gender = "M";
@@ -285,7 +291,117 @@ public class Controller {
     			temp = i;
     	}
     	oReport += String.format("Over the period %d to %d, %s for %s has hold the top spot most often for a total of %s times.", startingYear, endingYear, totalName[temp], gender, totalNumber[temp]);
-    	textAreaConsole.setText(oReport);
+    	return oReport;
+    }
+    
+    @FXML
+    void dotask1Report() {
+    	String oReport = "";
+    	oReport = task1InputCheck();
+    	if (!oReport.isEmpty()) {
+    		oReport = String.format("Invalid input.\n") + oReport;
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	textAreaConsole.setText(task1Result());
+    }
+    
+    String application1InputCheck() {
+    	String oReport = "";
+    	String regexName = "[A-Z][a-z]+";
+    	String regexYear = "[+-]?[0-9]+";
+    	Pattern pName = Pattern.compile(regexName);
+    	Pattern pYear = Pattern.compile(regexYear);
+    	Matcher m;
+    	String iDadName = task4iDadName.getText();
+    	m = pName.matcher(iDadName);
+    	if (iDadName.isEmpty()) {
+    		oReport += String.format("Male Name is Empty.\n");
+    		
+    	}
+    	else if (!(m.find() && m.group().equals(iDadName))) {
+    		oReport += String.format("Male Name is invalid.\n");
+    	}
+    	String iMomName = task4iMomName.getText();
+    	m = pName.matcher(iMomName);
+    	if (iMomName.isEmpty()) {
+    		oReport += String.format("Female Name is Empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(iMomName))) {
+    		oReport += String.format("Female Name is invalid.\n");
+    	}
+    	m = pYear.matcher(task4iDadYOB.getText());
+    	if (task4iDadYOB.getText().isEmpty()) {
+    		oReport += String.format("Dad Born Year is Empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task4iDadYOB.getText()))){
+    		oReport += String.format("Dad Born Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iDadYOB.getText())<1880 || Integer.parseInt(task4iDadYOB.getText())>2019) {
+    		oReport += String.format("Dad Born Year is not in [1880, 2019].\n");
+    	}
+    	m = pYear.matcher(task4iMomYOB.getText());
+    	if (task4iMomYOB.getText().isEmpty()) {
+    		oReport += String.format("Mom Born Year is Empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task4iMomYOB.getText()))){
+    		oReport += String.format("Mom Born Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iMomYOB.getText())<1880 || Integer.parseInt(task4iMomYOB.getText())>2019) {
+    		oReport += String.format("Mom Born Year is not in [1880, 2019].\n");
+    	}
+    	m = pYear.matcher(task4iVintageYear.getText());
+    	if (task4iVintageYear.getText().isEmpty()) {
+    	}
+    	else if (!(m.find() && m.group().equals(task4iVintageYear.getText()))) {
+    		oReport += String.format("Vintage Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iVintageYear.getText())<1880 || Integer.parseInt(task4iVintageYear.getText())>2019) {
+    		oReport += String.format("Vintage Year is not in [1880, 2019].\n");
+    	}
+    	return oReport;
+    }
+    
+    String NKT4Algorithm(String iName, int iYOB, String gender, int vintageYear){
+    	String oName;
+    	int iRank = AnalyzeNames.getRank(iYOB, iName, gender);
+    	if (iRank == -1) {
+    		oName = AnalyzeNames.getName(vintageYear, 1, gender);
+    	}
+    	else {
+    		oName = AnalyzeNames.getName(vintageYear, iRank, gender);
+    	}
+    	return oName;
+    }
+    
+    String application1Result() {
+    	String oReport = "";
+    	String iDadName = task4iDadName.getText();
+    	String iMomName = task4iMomName.getText();
+    	int iDadYOB = Integer.parseInt(task4iDadYOB.getText());
+    	int iMomYOB = Integer.parseInt(task4iMomYOB.getText());
+    	int vintageYear;
+    	if (task4iVintageYear.getText().isEmpty()) {
+    		vintageYear = 2019;
+    	}
+    	else {
+    		vintageYear = Integer.parseInt(task4iVintageYear.getText());
+    	}
+    	String boyName = NKT4Algorithm(iDadName, iDadYOB, "M", vintageYear);
+    	String girlName = NKT4Algorithm(iMomName, iMomYOB, "F", vintageYear);
+    	oReport = String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.", boyName, girlName);
+    	return oReport;
+    }
+    
+    @FXML
+    void doApplication1Report() {
+    	 String oReport = application1InputCheck();
+    	 if (!oReport.isEmpty()) {
+    		 oReport = String.format("Invalid input.\n") + oReport;
+    		 textAreaConsole.setText(oReport);
+    		 return;
+    	 }
+    	 textAreaConsole.setText(application1Result());
     }
 }
 
