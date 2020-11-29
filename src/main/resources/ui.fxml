@@ -44,7 +44,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="384.0" prefWidth="719.0">
                            <children>
-                              <RadioButton layoutX="360.0" layoutY="100.0" mnemonicParsing="false" text="Female">
+                              <RadioButton fx:id="task1F" layoutX="360.0" layoutY="100.0" mnemonicParsing="false" text="Female">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="T1" />
                                  </toggleGroup></RadioButton>
@@ -127,7 +127,19 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="719.0">
                            <children>
-                              <TextArea layoutX="40.0" layoutY="26.0" prefHeight="242.0" prefWidth="638.0" text="Develop and implement an online service using empirical data to help make informed decisions on naming their newborn babies.  Sample Scenario of Application: (i) Parents seeking advices on naming their babies; (ii) A couple seeking advices on naming their pets&#10;&#10;Input&#10;* iDadName, iMomName: Names of the baby’s dad and mom&#10;* iDadYOB, iMomYOB: Years of birth of the baby’s dad and mom&#10;* iVintageYear (optional): A year to be chosen from 1880 to 2019; If not chosen, set the value of iVintageYear to 2019&#10;&#10;Output&#10;* oBoyName: Recommended name for baby boy according to the NK-T4 Algorithm&#10;* oGirlName: Recommended name for baby girl according to the NK-T4 Algorithm&#10;* plus, WOW factor on user experience and algorithm design!" wrapText="true" />
+                              <TextArea layoutX="40.0" layoutY="26.0" prefHeight="55.0" prefWidth="638.0" text="Develop and implement an online service using empirical data to help make informed decisions on naming their newborn babies.  Sample Scenario of Application: (i) Parents seeking advices on naming their babies; (ii) A couple seeking advices on naming their pets&#10;&#10;Input&#10;* iDadName, iMomName: Names of the baby’s dad and mom&#10;* iDadYOB, iMomYOB: Years of birth of the baby’s dad and mom&#10;* iVintageYear (optional): A year to be chosen from 1880 to 2019; If not chosen, set the value of iVintageYear to 2019&#10;&#10;Output&#10;* oBoyName: Recommended name for baby boy according to the NK-T4 Algorithm&#10;* oGirlName: Recommended name for baby girl according to the NK-T4 Algorithm&#10;* plus, WOW factor on user experience and algorithm design!" wrapText="true" />
+                              <Button fx:id="application1Reoprt" layoutX="82.0" layoutY="271.0" mnemonicParsing="false" onAction="#doApplication1Report" text="APPLICATION" />
+                              <Label layoutX="84.0" layoutY="153.0" text="Male Born Year (1880-2019): " />
+                              <Label layoutX="351.0" layoutY="153.0" text="Female Born Year (1880-2019): " />
+                              <Label layoutX="84.0" layoutY="109.0" text="Male Name: " />
+                              <Label layoutX="351.0" layoutY="109.0" text="Female Name: " />
+                              <Label layoutX="84.0" layoutY="195.0" text="Vintage Year (1880-2019) (Optional): " />
+                              <TextField fx:id="task4iDadName" layoutX="155.0" layoutY="105.0" prefHeight="23.0" prefWidth="98.0" text="David" />
+                              <TextField fx:id="task4iMomName" layoutX="435.0" layoutY="105.0" prefHeight="23.0" prefWidth="98.0" text="Mary" />
+                              <TextField fx:id="task4iDadYOB" layoutX="248.0" layoutY="149.0" prefHeight="23.0" prefWidth="98.0" text="1941" />
+                              <TextField fx:id="task4iMomYOB" layoutX="527.0" layoutY="149.0" prefHeight="23.0" prefWidth="98.0" text="1945" />
+                              <TextField fx:id="task4iVintageYear" layoutX="290.0" layoutY="191.0" prefHeight="23.0" prefWidth="98.0" />
+                              <Label layoutX="82.0" layoutY="235.0" text="Leave Vintage Year blank if no preference." />
                            </children>
                         </AnchorPane>
                     </content>

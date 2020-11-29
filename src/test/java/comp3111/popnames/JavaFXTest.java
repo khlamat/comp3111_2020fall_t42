@@ -32,7 +32,7 @@ public class JavaFXTest extends ApplicationTest {
 	
 	@Test
 	public void testButtonRankTrue() {	
-		clickOn("#tabTaskZero");
+		//clickOn("#tabTaskZero");
 		clickOn("#buttonRankM");
 		//sleep(1000);
 		String s1 = t.getText();
@@ -45,7 +45,7 @@ public class JavaFXTest extends ApplicationTest {
 	
 	@Test
 	public void testButtonRankFalse() {	
-		clickOn("#tabTaskZero");
+		//clickOn("#tabTaskZero");
 		clickOn("#buttonRankM");
 		//sleep(1000);
 		String s1 = t.getText();
@@ -84,7 +84,7 @@ public class JavaFXTest extends ApplicationTest {
 		topN.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Top N is Empty."));
+		assertTrue(s1.equals("Invalid input.\nTop N is Empty.\n"));
 	}
 	
 	@Test
@@ -94,7 +94,7 @@ public class JavaFXTest extends ApplicationTest {
 		topN.setText("@");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Top N is not an integer."));
+		assertTrue(s1.equals("Invalid input.\nTop N is not an integer.\n"));
 	}
 	
 	@Test
@@ -104,7 +104,7 @@ public class JavaFXTest extends ApplicationTest {
 		topN.setText("-10");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Top N is not positive."));
+		assertTrue(s1.equals("Invalid input.\nTop N is not positive.\n"));
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class JavaFXTest extends ApplicationTest {
 		startingYear.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("StartingYear is Empty."));
+		assertTrue(s1.equals("Invalid input.\nStartingYear is Empty.\n"));
 	}
 	
 	@Test
@@ -128,7 +128,7 @@ public class JavaFXTest extends ApplicationTest {
 		startingYear.setText("f");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("StartingYear is not an integer."));
+		assertTrue(s1.equals("Invalid input.\nStartingYear is not an integer.\n"));
 	}
 	
 	@Test
@@ -140,7 +140,7 @@ public class JavaFXTest extends ApplicationTest {
 		startingYear.setText("2077");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("StartingYear is not in [1880, 2019]."));	
+		assertTrue(s1.equals("Invalid input.\nStartingYear is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
@@ -154,7 +154,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("EndingYear is Empty."));
+		assertTrue(s1.equals("Invalid input.\nEndingYear is Empty.\n"));
 	}
 	
 	@Test
@@ -168,7 +168,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("-");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("EndingYear is not an integer."));
+		assertTrue(s1.equals("Invalid input.\nEndingYear is not an integer.\n"));
 	}
 	
 	@Test
@@ -182,7 +182,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("2077");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("EndingYear is not in [1880, 2019]."));
+		assertTrue(s1.equals("Invalid input.\nEndingYear is not in [1880, 2019].\n"));
 	}
 	
 	@Test
@@ -196,7 +196,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("1940");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("EndingYear should not be less than StartingYear."));
+		assertTrue(s1.equals("Invalid input.\nEndingYear should not be less than StartingYear.\n"));
 	}
 	
 	@Test
