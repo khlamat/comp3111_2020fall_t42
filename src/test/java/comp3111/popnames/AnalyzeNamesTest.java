@@ -64,7 +64,7 @@ public class AnalyzeNamesTest {
 	@Test
 	public void testNumberOfBornWithInvalidBigYear() {
 		AnalyzeNames a = new AnalyzeNames();
-		int number = a.getNumberOfBorn(2077, "Dave", "M");
+		int number = a.getNumberOfBorn(2020, "Dave", "M");
     	assertEquals(-1, number);
 	}
 	
