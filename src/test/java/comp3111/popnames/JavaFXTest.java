@@ -29,7 +29,7 @@ public class JavaFXTest extends ApplicationTest {
    		s = scene;
 		t = (TextArea)s.lookup("#textAreaConsole");
 	}
-	
+	/*
 	@Test
 	public void testButtonRankTrue() {	
 		//clickOn("#tabTaskZero");
@@ -62,19 +62,37 @@ public class JavaFXTest extends ApplicationTest {
 		String s = t.getText();
 		assertTrue(s.equals("David"));
 	}
+	*/
 	/* Task 1 Test*/
-	@Test
+	/*@Test
 	public void testTask1DefaultInput() {
 		clickOn("#tabReport1");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Year\tTop 1          \tTop 2          \tTop 3          \tTop 4          \tTop 5          \tTop 6          \tTop 7          \tTop 8          \tTop 9          \tTop 10         \t\n" + 
-				"1941\tJames          \tRobert         \tJohn           \tWilliam        \tRichard        \tCharles        \tDavid          \tThomas         \tRonald         \tDonald         \t\n" + 
-				"1942\tJames          \tRobert         \tJohn           \tWilliam        \tRichard        \tDavid          \tCharles        \tThomas         \tRonald         \tDonald         \t\n" + 
-				"1943\tJames          \tRobert         \tJohn           \tWilliam        \tRichard        \tDavid          \tCharles        \tThomas         \tRonald         \tMichael        \t\n" + 
-				"1944\tJames          \tRobert         \tJohn           \tWilliam        \tRichard        \tDavid          \tCharles        \tThomas         \tMichael        \tRonald         \t\n" + 
-				"1945\tJames          \tRobert         \tJohn           \tWilliam        \tRichard        \tDavid          \tCharles        \tThomas         \tMichael        \tRonald         \t\n" + 
-				"Over the period 1941 to 1945, James for M has hold the top spot most often for a total of 375534 times."));		
+		assertTrue(s1.equals(String.format("Year\tTop 1          \tTop 2          \tTop 3          \tTop 4          \tTop 5          \tTop 6          \tTop 7          \tTop 8          \tTop 9          \tTop 10         \t\n" + 
+				"1941\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n" + 
+				"1942\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n" + 
+				"1943\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n" + 
+				"1944\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n" + 
+				"1945\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n" + 
+				"Over the period 1941 to 1945, James for M has hold the top spot most often for a total of 375534 times.",
+				AnalyzeNames.getName(1941, 1, "M"), AnalyzeNames.getName(1941, 2, "M"), AnalyzeNames.getName(1941, 3, "M"),
+				AnalyzeNames.getName(1941, 4, "M"), AnalyzeNames.getName(1941, 5, "M"), AnalyzeNames.getName(1941, 6, "M"),
+				AnalyzeNames.getName(1941, 7, "M"), AnalyzeNames.getName(1941, 8, "M"), AnalyzeNames.getName(1941, 9, "M"),
+				AnalyzeNames.getName(1941, 10, "M"), AnalyzeNames.getName(1942, 1, "M"), AnalyzeNames.getName(1942, 2, "M"),
+				AnalyzeNames.getName(1942, 3, "M"), AnalyzeNames.getName(1942, 4, "M"), AnalyzeNames.getName(1942, 5, "M"),
+				AnalyzeNames.getName(1942, 6, "M"), AnalyzeNames.getName(1942, 7, "M"), AnalyzeNames.getName(1942, 8, "M"),
+				AnalyzeNames.getName(1942, 9, "M"), AnalyzeNames.getName(1942, 10, "M"), AnalyzeNames.getName(1943, 1, "M"),
+				AnalyzeNames.getName(1943, 2, "M"), AnalyzeNames.getName(1943, 3, "M"), AnalyzeNames.getName(1943, 4, "M"),
+				AnalyzeNames.getName(1943, 5, "M"), AnalyzeNames.getName(1943, 6, "M"), AnalyzeNames.getName(1943, 7, "M"),
+				AnalyzeNames.getName(1943, 8, "M"), AnalyzeNames.getName(1943, 9, "M"), AnalyzeNames.getName(1943, 10, "M"),
+				AnalyzeNames.getName(1944, 1, "M"), AnalyzeNames.getName(1944, 2, "M"), AnalyzeNames.getName(1944, 3, "M"),
+				AnalyzeNames.getName(1944, 4, "M"), AnalyzeNames.getName(1944, 5, "M"), AnalyzeNames.getName(1944, 6, "M"),
+				AnalyzeNames.getName(1944, 7, "M"), AnalyzeNames.getName(1944, 8, "M"), AnalyzeNames.getName(1944, 9, "M"),
+				AnalyzeNames.getName(1944, 10, "M"), AnalyzeNames.getName(1945, 1, "M"), AnalyzeNames.getName(1945, 2, "M"),
+				AnalyzeNames.getName(1945, 3, "M"), AnalyzeNames.getName(1945, 4, "M"), AnalyzeNames.getName(1945, 5, "M"),
+				AnalyzeNames.getName(1945, 6, "M"), AnalyzeNames.getName(1945, 7, "M"), AnalyzeNames.getName(1945, 8, "M"),
+				AnalyzeNames.getName(1945, 9, "M"), AnalyzeNames.getName(1945, 10, "M"))));		
     }
 	
 	@Test
@@ -101,10 +119,20 @@ public class JavaFXTest extends ApplicationTest {
 	public void testTask1TopNIsNotPositive() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
-		topN.setText("-10");
+		topN.setText("0");
 		clickOn("#task1Report");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nTop N is not positive.\n"));
+	}
+	
+	@Test
+	public void testTask1TopNIsTooLarge() {
+		clickOn("#tabReport1");
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("10001");
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nTop N is more than the number of recorded names for each year.\n"));
 	}
 	
 	@Test
@@ -132,12 +160,24 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testTask1StartingYearIsNotInRange() {
+	public void testTask1StartingYearIsLessThanRange() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
 		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
-		startingYear.setText("2077");
+		startingYear.setText("1879");
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nStartingYear is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testTask1StartingYearIsMoreThanRange() {
+		clickOn("#tabReport1");
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("1");
+		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
+		startingYear.setText("2020");
 		clickOn("#task1Report");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nStartingYear is not in [1880, 2019].\n"));	
@@ -172,14 +212,28 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
-	public void testTask1EndingYearIsNotInRange() {
+	public void testTask1EndingYearIsLessThanRange() {
 		clickOn("#tabReport1");
 		TextField topN = (TextField)s.lookup("#task1TopN");
 		topN.setText("1");
 		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
 		startingYear.setText("1941");
 		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
-		endingYear.setText("2077");
+		endingYear.setText("1879");
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nEndingYear is not in [1880, 2019].\n"));
+	}
+	
+	@Test
+	public void testTask1EndingYearIsMoreThanRange() {
+		clickOn("#tabReport1");
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("1");
+		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
+		startingYear.setText("1941");
+		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
+		endingYear.setText("2020");
 		clickOn("#task1Report");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nEndingYear is not in [1880, 2019].\n"));
@@ -200,6 +254,20 @@ public class JavaFXTest extends ApplicationTest {
 	}
 	
 	@Test
+	public void testTask1AllInputEmpty() {
+		clickOn("#tabReport1");
+		TextField topN = (TextField)s.lookup("#task1TopN");
+		topN.setText("");
+		TextField startingYear = (TextField)s.lookup("#task1StartingYear");
+		startingYear.setText("");
+		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
+		endingYear.setText("");
+		clickOn("#task1Report");
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nTop N is Empty.\nStartingYear is Empty.\nEndingYear is Empty.\n"));
+	}
+	
+	@Test
 	public void testTask1Female() {
 		clickOn("#tabReport1");
 		RadioButton task1M = (RadioButton)s.lookup("#task1M");
@@ -210,13 +278,13 @@ public class JavaFXTest extends ApplicationTest {
 		startingYear.setText("1945");
 		TextField endingYear = (TextField)s.lookup("#task1EndingYear");
 		endingYear.setText("1945");
-		sleep(1000);
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Year\tTop 1          \t\n" + 
-				"1945\tMary           \t\n" + 
-				"Over the period 1945 to 1945, Mary for F has hold the top spot most often for a total of 59284 times."));		
+		assertTrue(s1.equals(String.format("Year\tTop 1          \t\n" + 
+				"1945\t%-15s\t\n" + 
+				"Over the period 1945 to 1945, Mary for F has hold the top spot most often for a total of %d times.", AnalyzeNames.getName(1945, 1, "F"), AnalyzeNames.getNumberOfBorn(1945, "Mary", "F"))));		
     }
+	
 	
 	@Test
 	public void testMostUsedName() {
@@ -229,12 +297,236 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("1956");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Year\tTop 1          \t\n" + 
-				"1952\tJames          \t\n" + 
-				"1953\tRobert         \t\n" + 
-				"1954\tMichael        \t\n" + 
-				"1955\tMichael        \t\n" + 
-				"1956\tMichael        \t\n" + 
-				"Over the period 1952 to 1956, Michael for M has hold the top spot most often for a total of 430587 times."));
+		assertTrue(s1.equals(String.format("Year\tTop 1          \t\n" + 
+				"1952\t%-15s\t\n" + 
+				"1953\t%-15s\t\n" + 
+				"1954\t%-15s\t\n" + 
+				"1955\t%-15s\t\n" + 
+				"1956\t%-15s\t\n" + 
+				"Over the period 1952 to 1956, Michael for M has hold the top spot most often for a total of 430587 times.",
+				AnalyzeNames.getName(1952, 1, "M"), AnalyzeNames.getName(1953, 1, "M"), AnalyzeNames.getName(1954, 1, "M"),
+				AnalyzeNames.getName(1955, 1, "M"), AnalyzeNames.getName(1956, 1, "M"))));
 	}
+	*/
+	/* Application 1 Test*/
+	@Test
+	public void testApplication1DefaultInput() {
+		clickOn("#tabApp1");sleep(1000);
+		clickOn("#application1Reoprt");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
+				AnalyzeNames.getName(2019, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(2019, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
+	}
+	
+	@Test
+	public void testApplication1VintageYearIsNotInteger() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
+		vintageYear.setText("~");sleep(1000);
+		clickOn("#application1Reoprt");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nVintage Year is not an integer.\n"));
+	}
+	
+	@Test
+	public void testApplication1VintageYearIsLessThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
+		vintageYear.setText("1879");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1VintageYearIsMoreThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
+		vintageYear.setText("2020");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1DadNameIsEmpty() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadName = (TextField)s.lookup("#task4iDadName");
+		iDadName.setText("");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Name is empty.\n"));
+	}
+	
+	@Test
+	public void testApplication1MomNameIsEmpty() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomName = (TextField)s.lookup("#task4iMomName");
+		iMomName.setText("");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Name is empty.\n"));
+	}
+	
+	@Test
+	public void testApplication1DadNameIsInteger() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadName = (TextField)s.lookup("#task4iDadName");
+		iDadName.setText("123");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
+	}
+	
+	@Test
+	public void testApplication1MomNameIsInteger() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomName = (TextField)s.lookup("#task4iMomName");
+		iMomName.setText("123");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
+	}
+	
+	@Test
+	public void testApplication1DadNameDoesNotStartWithUppercase() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadName = (TextField)s.lookup("#task4iDadName");
+		iDadName.setText("david");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
+	}
+	
+	@Test
+	public void testApplication1MomNameDoesNotStartWithUppercase() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomName = (TextField)s.lookup("#task4iMomName");
+		iMomName.setText("mary");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
+	}
+	
+	@Test
+	public void testApplication1iDadYOBIsEmpty() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
+		iDadYOB.setText("");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Born Year is Empty.\n"));
+	}
+	
+	@Test
+	public void testApplication1iMomYOBIsEmpty() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
+		iMomYOB.setText("");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Born Year is Empty.\n"));
+	}
+	
+	@Test
+	public void testApplication1iDadYOBIsNotInteger() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
+		iDadYOB.setText("hi");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Born Year is not an integer.\n"));
+	}
+	
+	@Test
+	public void testApplication1iMomYOBIsNotInteger() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
+		iMomYOB.setText("bye");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Born Year is not an integer.\n"));
+	}
+	
+	@Test
+	public void testApplication1iDadYOBIsLessThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
+		iDadYOB.setText("1879");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1iMomYOBIsLessThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
+		iMomYOB.setText("1879");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1iDadYOBIsMoreThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
+		iDadYOB.setText("2020");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1iMomYOBIsMoreThanRange() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
+		iMomYOB.setText("2020");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
+	}
+	
+	@Test
+	public void testApplication1AllInputsAreEmpty() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadName = (TextField)s.lookup("#task4iDadName");
+		iDadName.setText("");sleep(1000);
+		TextField iMomName = (TextField)s.lookup("#task4iMomName");
+		iMomName.setText("");sleep(1000);
+		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
+		iDadYOB.setText("");sleep(1000);
+		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
+		iMomYOB.setText("");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals("Invalid input.\nDad Name is Empty.\nMom Name is Empty.\nDad Born Year is Empty.\nMom Born Year is Empty.\n"));
+	}
+	
+	@Test
+	public void testApplication1ChangeVintageYear() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
+		vintageYear.setText("1880");sleep(1000);
+		clickOn("#application1Report");sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
+				AnalyzeNames.getName(1880, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(1880, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
+	}
+	
+	@Test
+	public void testApplication1BothParentNameNotFound() {
+		clickOn("#tabApp1");sleep(1000);
+		TextField iDadName = (TextField)s.lookup("#task4iDadName");
+		iDadName.setText("Haha");sleep(1000);
+		TextField iMomName = (TextField)s.lookup("#task4iMomName");
+		iMomName.setText("Hehe");sleep(1000);
+		clickOn("#application1Report");
+		sleep(1000);
+		String s1 = t.getText();
+		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
+				AnalyzeNames.getName(2019, AnalyzeNames.getRank(1941,  "Haha", "M")+2, "M"), AnalyzeNames.getName(2019, AnalyzeNames.getRank(1945,  "Hehe", "F")+2, "F"))));
+	}
+	
 }
