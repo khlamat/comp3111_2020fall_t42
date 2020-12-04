@@ -202,7 +202,7 @@ public class Controller {
     	Matcher m;
     	m = p.matcher(task1TopN.getText());
     	if (task1TopN.getText().isEmpty()) {
-    		oReport += String.format("Top N is Empty.\n");
+    		oReport += String.format("Top N is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(task1TopN.getText()))){
     		oReport += String.format("Top N is not an integer.\n");
@@ -215,7 +215,7 @@ public class Controller {
     	}
     	m = p.matcher(task1StartingYear.getText());
     	if (task1StartingYear.getText().isEmpty()) {
-    		oReport += String.format("StartingYear is Empty.\n");
+    		oReport += String.format("StartingYear is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
     		oReport += String.format("StartingYear is not an integer.\n");
@@ -228,7 +228,7 @@ public class Controller {
     	}
     	m = p.matcher(task1EndingYear.getText());
     	if (task1EndingYear.getText().isEmpty()) {
-    		oReport += String.format("EndingYear is Empty.\n");
+    		oReport += String.format("EndingYear is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(task1EndingYear.getText()))){
     		oReport += String.format("EndingYear is not an integer.\n");
@@ -319,7 +319,7 @@ public class Controller {
     	String iDadName = task4iDadName.getText();
     	m = pName.matcher(iDadName);
     	if (iDadName.isEmpty()) {
-    		oReport += String.format("Dad Name is Empty.\n");
+    		oReport += String.format("Dad Name is empty.\n");
     		
     	}
     	else if (!(m.find() && m.group().equals(iDadName))) {
@@ -328,14 +328,14 @@ public class Controller {
     	String iMomName = task4iMomName.getText();
     	m = pName.matcher(iMomName);
     	if (iMomName.isEmpty()) {
-    		oReport += String.format("Mom Name is Empty.\n");
+    		oReport += String.format("Mom Name is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(iMomName))) {
     		oReport += String.format("Mom Name is invalid.\n");
     	}
     	m = pYear.matcher(task4iDadYOB.getText());
     	if (task4iDadYOB.getText().isEmpty()) {
-    		oReport += String.format("Dad Born Year is Empty.\n");
+    		oReport += String.format("Dad Born Year is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(task4iDadYOB.getText()))){
     		oReport += String.format("Dad Born Year is not an integer.\n");
@@ -345,7 +345,7 @@ public class Controller {
     	}
     	m = pYear.matcher(task4iMomYOB.getText());
     	if (task4iMomYOB.getText().isEmpty()) {
-    		oReport += String.format("Mom Born Year is Empty.\n");
+    		oReport += String.format("Mom Born Year is empty.\n");
     	}
     	else if (!(m.find() && m.group().equals(task4iMomYOB.getText()))){
     		oReport += String.format("Mom Born Year is not an integer.\n");

@@ -29,7 +29,7 @@ public class JavaFXTest extends ApplicationTest {
    		s = scene;
 		t = (TextArea)s.lookup("#textAreaConsole");
 	}
-	/*
+	
 	@Test
 	public void testButtonRankTrue() {	
 		//clickOn("#tabTaskZero");
@@ -62,9 +62,9 @@ public class JavaFXTest extends ApplicationTest {
 		String s = t.getText();
 		assertTrue(s.equals("David"));
 	}
-	*/
+	
 	/* Task 1 Test*/
-	/*@Test
+	@Test
 	public void testTask1DefaultInput() {
 		clickOn("#tabReport1");
 		clickOn("#task1Report");
@@ -102,7 +102,7 @@ public class JavaFXTest extends ApplicationTest {
 		topN.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nTop N is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nTop N is empty.\n"));
 	}
 	
 	@Test
@@ -144,7 +144,7 @@ public class JavaFXTest extends ApplicationTest {
 		startingYear.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nStartingYear is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nStartingYear is empty.\n"));
 	}
 	
 	@Test
@@ -194,7 +194,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nEndingYear is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nEndingYear is empty.\n"));
 	}
 	
 	@Test
@@ -264,7 +264,7 @@ public class JavaFXTest extends ApplicationTest {
 		endingYear.setText("");
 		clickOn("#task1Report");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nTop N is Empty.\nStartingYear is Empty.\nEndingYear is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nTop N is empty.\nStartingYear is empty.\nEndingYear is empty.\n"));
 	}
 	
 	@Test
@@ -307,12 +307,12 @@ public class JavaFXTest extends ApplicationTest {
 				AnalyzeNames.getName(1952, 1, "M"), AnalyzeNames.getName(1953, 1, "M"), AnalyzeNames.getName(1954, 1, "M"),
 				AnalyzeNames.getName(1955, 1, "M"), AnalyzeNames.getName(1956, 1, "M"))));
 	}
-	*/
+	
 	/* Application 1 Test*/
 	@Test
 	public void testApplication1DefaultInput() {
-		clickOn("#tabApp1");sleep(1000);
-		clickOn("#application1Reoprt");sleep(1000);
+		clickOn("#tabApp1");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
 				AnalyzeNames.getName(2019, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(2019, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
@@ -320,196 +320,196 @@ public class JavaFXTest extends ApplicationTest {
 	
 	@Test
 	public void testApplication1VintageYearIsNotInteger() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
-		vintageYear.setText("~");sleep(1000);
-		clickOn("#application1Reoprt");sleep(1000);
+		vintageYear.setText("~");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not an integer.\n"));
 	}
 	
 	@Test
 	public void testApplication1VintageYearIsLessThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
-		vintageYear.setText("1879");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		vintageYear.setText("1879");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1VintageYearIsMoreThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
-		vintageYear.setText("2020");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		vintageYear.setText("2020");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1DadNameIsEmpty() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadName = (TextField)s.lookup("#task4iDadName");
-		iDadName.setText("");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadName.setText("");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Name is empty.\n"));
 	}
 	
 	@Test
 	public void testApplication1MomNameIsEmpty() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomName = (TextField)s.lookup("#task4iMomName");
-		iMomName.setText("");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomName.setText("");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Name is empty.\n"));
 	}
 	
 	@Test
 	public void testApplication1DadNameIsInteger() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadName = (TextField)s.lookup("#task4iDadName");
-		iDadName.setText("123");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadName.setText("123");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
 	}
 	
 	@Test
 	public void testApplication1MomNameIsInteger() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomName = (TextField)s.lookup("#task4iMomName");
-		iMomName.setText("123");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomName.setText("123");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
 	}
 	
 	@Test
 	public void testApplication1DadNameDoesNotStartWithUppercase() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadName = (TextField)s.lookup("#task4iDadName");
-		iDadName.setText("david");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadName.setText("david");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
 	}
 	
 	@Test
 	public void testApplication1MomNameDoesNotStartWithUppercase() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomName = (TextField)s.lookup("#task4iMomName");
-		iMomName.setText("mary");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomName.setText("mary");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
 	}
 	
 	@Test
 	public void testApplication1iDadYOBIsEmpty() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
-		iDadYOB.setText("");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadYOB.setText("");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nDad Born Year is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nDad Born Year is empty.\n"));
 	}
 	
 	@Test
 	public void testApplication1iMomYOBIsEmpty() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
-		iMomYOB.setText("");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomYOB.setText("");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nMom Born Year is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nMom Born Year is empty.\n"));
 	}
 	
 	@Test
 	public void testApplication1iDadYOBIsNotInteger() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
-		iDadYOB.setText("hi");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadYOB.setText("hi");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not an integer.\n"));
 	}
 	
 	@Test
 	public void testApplication1iMomYOBIsNotInteger() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
-		iMomYOB.setText("bye");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomYOB.setText("bye");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not an integer.\n"));
 	}
 	
 	@Test
 	public void testApplication1iDadYOBIsLessThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
-		iDadYOB.setText("1879");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadYOB.setText("1879");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1iMomYOBIsLessThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
-		iMomYOB.setText("1879");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomYOB.setText("1879");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1iDadYOBIsMoreThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
-		iDadYOB.setText("2020");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iDadYOB.setText("2020");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1iMomYOBIsMoreThanRange() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
-		iMomYOB.setText("2020");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomYOB.setText("2020");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
 	}
 	
 	@Test
 	public void testApplication1AllInputsAreEmpty() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadName = (TextField)s.lookup("#task4iDadName");
-		iDadName.setText("");sleep(1000);
+		iDadName.setText("");
 		TextField iMomName = (TextField)s.lookup("#task4iMomName");
-		iMomName.setText("");sleep(1000);
+		iMomName.setText("");
 		TextField iDadYOB = (TextField)s.lookup("#task4iDadYOB");
-		iDadYOB.setText("");sleep(1000);
+		iDadYOB.setText("");
 		TextField iMomYOB = (TextField)s.lookup("#task4iMomYOB");
-		iMomYOB.setText("");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		iMomYOB.setText("");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
-		assertTrue(s1.equals("Invalid input.\nDad Name is Empty.\nMom Name is Empty.\nDad Born Year is Empty.\nMom Born Year is Empty.\n"));
+		assertTrue(s1.equals("Invalid input.\nDad Name is empty.\nMom Name is empty.\nDad Born Year is empty.\nMom Born Year is empty.\n"));
 	}
 	
 	@Test
 	public void testApplication1ChangeVintageYear() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField vintageYear = (TextField)s.lookup("#task4iVintageYear");
-		vintageYear.setText("1880");sleep(1000);
-		clickOn("#application1Report");sleep(1000);
+		vintageYear.setText("1880");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
 				AnalyzeNames.getName(1880, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(1880, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
@@ -517,13 +517,12 @@ public class JavaFXTest extends ApplicationTest {
 	
 	@Test
 	public void testApplication1BothParentNameNotFound() {
-		clickOn("#tabApp1");sleep(1000);
+		clickOn("#tabApp1");
 		TextField iDadName = (TextField)s.lookup("#task4iDadName");
-		iDadName.setText("Haha");sleep(1000);
+		iDadName.setText("Haha");
 		TextField iMomName = (TextField)s.lookup("#task4iMomName");
-		iMomName.setText("Hehe");sleep(1000);
-		clickOn("#application1Report");
-		sleep(1000);
+		iMomName.setText("Hehe");
+		clickOn("#application1Reoprt");
 		String s1 = t.getText();
 		assertTrue(s1.equals(String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.",
 				AnalyzeNames.getName(2019, AnalyzeNames.getRank(1941,  "Haha", "M")+2, "M"), AnalyzeNames.getName(2019, AnalyzeNames.getRank(1945,  "Hehe", "F")+2, "F"))));
