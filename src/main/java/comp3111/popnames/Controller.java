@@ -242,6 +242,13 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
+  
+  /**
+     * Task 1
+     * A function to check the input of task 1
+     * @return The message generated for invalid input
+     * 
+     */
     String task1InputCheck() {
     	String oReport = "";
     	boolean startingYearValid = false;
@@ -290,6 +297,13 @@ public class Controller {
     	return oReport;
     }
     
+  
+  /**
+     * Task 1
+     * A function to generate the result of task 1
+     * @return The message that will be shown in the console
+     * 
+     */
     String task1Result() {
     	String oReport = "";
     	String gender = "";
@@ -346,6 +360,12 @@ public class Controller {
     	return oReport;
     }
     
+  
+  /**
+     * Task 1
+     * To be triggered by the "REPORT" button on the Task 1 Tab
+     * 
+     */
     @FXML
     void dotask1Report() {
     	String oReport = "";
@@ -358,6 +378,13 @@ public class Controller {
     	textAreaConsole.setText(task1Result());
     }
     
+  
+  /**
+     * Application 1
+     * A function to check the input of App 1
+     * @return The message generated for invalid input
+     * 
+     */
     String application1InputCheck() {
     	String oReport = "";
     	String regexName = "[A-Z][a-z]+";
@@ -414,6 +441,17 @@ public class Controller {
     	return oReport;
     }
     
+  
+  /**
+     * Application 1
+     * A function that will return the name of the given parent name, parent year of born, gender and a vintage year in App 1
+     * @param iName The name of the parent
+     * @param iYOB The year of born of the parent
+     * @param gender The gender of the parent
+     * @param vintageYear The vintage year provided
+     * @return The name from the given input
+     * 
+     */
     String NKT4Algorithm(String iName, int iYOB, String gender, int vintageYear){
     	String oName;
     	int iRank = AnalyzeNames.getRank(iYOB, iName, gender);
@@ -426,6 +464,13 @@ public class Controller {
     	return oName;
     }
     
+  
+  /**
+     * Application 1
+     * A function to generate the result of App 1
+     * @return The message that will be shown in the console
+     * 
+     */
     String application1Result() {
     	String oReport = "";
     	String iDadName = task4iDadName.getText();
@@ -445,6 +490,12 @@ public class Controller {
     	return oReport;
     }
     
+  
+  /**
+     * Application 1
+     * To be triggered by the "APPLICATION" button on the App 1 Tab
+     * 
+     */
     @FXML
     void doApplication1Report() {
     	 String oReport = application1InputCheck();

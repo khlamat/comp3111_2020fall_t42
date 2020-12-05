@@ -64,7 +64,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s.equals("David"));
 	}
 	
-	/* Task 1 Test*/
+	
+	/**
+	 * Task 1 test case: default input 
+	 * 
+	 */
 	@Test
 	public void testTask1DefaultInput() {
 		clickOn("#tabReport1");
@@ -96,6 +100,11 @@ public class JavaFXTest extends ApplicationTest {
 				AnalyzeNames.getName(1945, 9, "M"), AnalyzeNames.getName(1945, 10, "M"))));		
     }
 	
+	
+	/**
+	 * Task 1 test case: empty top N 
+	 * 
+	 */
 	@Test
 	public void testTask1TopNIsEmpty() {
 		clickOn("#tabReport1");
@@ -106,6 +115,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nTop N is empty.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: Top N is not an integer
+	 * 
+	 */
 	@Test
 	public void testTask1TopNIsNotInteger() {
 		clickOn("#tabReport1");
@@ -116,6 +130,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nTop N is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: Top N is not a positive integer
+	 * 
+	 */
 	@Test
 	public void testTask1TopNIsNotPositive() {
 		clickOn("#tabReport1");
@@ -126,6 +145,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nTop N is not positive.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: Top N is larger than the number of recorded names for a particular year
+	 * 
+	 */
 	@Test
 	public void testTask1TopNIsTooLarge() {
 		clickOn("#tabReport1");
@@ -136,6 +160,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nTop N is more than the number of recorded names for each year.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: starting year is empty
+	 * 
+	 */
 	@Test
 	public void testTask1StartingYearIsEmpty() {
 		clickOn("#tabReport1");
@@ -148,6 +177,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nStartingYear is empty.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: starting year is not an integer
+	 * 
+	 */
 	@Test
 	public void testTask1StartingYearIsNotInteger() {
 		clickOn("#tabReport1");
@@ -160,6 +194,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nStartingYear is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: starting year is less than the earliest recorded year
+	 * 
+	 */
 	@Test
 	public void testTask1StartingYearIsLessThanRange() {
 		clickOn("#tabReport1");
@@ -172,6 +211,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nStartingYear is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Task 1 test case: starting year is larger than the latest recorded year
+	 * 
+	 */
 	@Test
 	public void testTask1StartingYearIsMoreThanRange() {
 		clickOn("#tabReport1");
@@ -184,6 +228,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nStartingYear is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Task 1 test case: ending year is empty
+	 * 
+	 */
 	@Test
 	public void testTask1EndingYearIsEmpty() {
 		clickOn("#tabReport1");
@@ -198,6 +247,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nEndingYear is empty.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: ending year is not an integer
+	 * 
+	 */
 	@Test
 	public void testTask1EndingYearIsNotInteger() {
 		clickOn("#tabReport1");
@@ -212,6 +266,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nEndingYear is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: ending year is less than the earliest recorded year
+	 * 
+	 */
 	@Test
 	public void testTask1EndingYearIsLessThanRange() {
 		clickOn("#tabReport1");
@@ -226,6 +285,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nEndingYear is not in [1880, 2019].\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: ending year is larger than the latest recorded year
+	 * 
+	 */
 	@Test
 	public void testTask1EndingYearIsMoreThanRange() {
 		clickOn("#tabReport1");
@@ -240,6 +304,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nEndingYear is not in [1880, 2019].\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: ending year is smaller than starting year
+	 * 
+	 */
 	@Test
 	public void testTask1EndingYearIsSmallerThanStartingYear() {
 		clickOn("#tabReport1");
@@ -254,6 +323,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nEndingYear should not be less than StartingYear.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: All inputs are empty
+	 * 
+	 */
 	@Test
 	public void testTask1AllInputEmpty() {
 		clickOn("#tabReport1");
@@ -268,6 +342,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nTop N is empty.\nStartingYear is empty.\nEndingYear is empty.\n"));
 	}
 	
+	
+	/**
+	 * Task 1 test case: test female button
+	 * 
+	 */
 	@Test
 	public void testTask1Female() {
 		clickOn("#tabReport1");
@@ -287,6 +366,10 @@ public class JavaFXTest extends ApplicationTest {
     }
 	
 	
+	/**
+	 * Task 1 test case: testing output for the most used name
+	 * 
+	 */
 	@Test
 	public void testMostUsedName() {
 		clickOn("#tabReport1");
@@ -309,7 +392,11 @@ public class JavaFXTest extends ApplicationTest {
 				AnalyzeNames.getName(1955, 1, "M"), AnalyzeNames.getName(1956, 1, "M"))));
 	}
 	
-	/* Application 1 Test*/
+	
+	/**
+	 * Application 1 test case: test default input
+	 * 
+	 */
 	@Test
 	public void testApplication1DefaultInput() {
 		clickOn("#tabApp1");
@@ -319,6 +406,11 @@ public class JavaFXTest extends ApplicationTest {
 				AnalyzeNames.getName(2019, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(2019, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test vintage year is not integer
+	 * 
+	 */
 	@Test
 	public void testApplication1VintageYearIsNotInteger() {
 		clickOn("#tabApp1");
@@ -329,6 +421,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test vintage year less than the earliest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1VintageYearIsLessThanRange() {
 		clickOn("#tabApp1");
@@ -339,6 +436,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test vintage year less than the latest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1VintageYearIsMoreThanRange() {
 		clickOn("#tabApp1");
@@ -349,6 +451,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nVintage Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad name is empty
+	 * 
+	 */
 	@Test
 	public void testApplication1DadNameIsEmpty() {
 		clickOn("#tabApp1");
@@ -359,6 +466,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Name is empty.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom name is empty
+	 * 
+	 */
 	@Test
 	public void testApplication1MomNameIsEmpty() {
 		clickOn("#tabApp1");
@@ -369,6 +481,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Name is empty.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad name is an integer
+	 * 
+	 */
 	@Test
 	public void testApplication1DadNameIsInteger() {
 		clickOn("#tabApp1");
@@ -379,6 +496,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom name is an integer
+	 * 
+	 */
 	@Test
 	public void testApplication1MomNameIsInteger() {
 		clickOn("#tabApp1");
@@ -389,6 +511,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad name starting with a lowercase letter
+	 * 
+	 */
 	@Test
 	public void testApplication1DadNameDoesNotStartWithUppercase() {
 		clickOn("#tabApp1");
@@ -399,6 +526,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Name is invalid.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom name starting with a lowercase letter
+	 * 
+	 */
 	@Test
 	public void testApplication1MomNameDoesNotStartWithUppercase() {
 		clickOn("#tabApp1");
@@ -409,6 +541,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Name is invalid.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad name is empty
+	 * 
+	 */
 	@Test
 	public void testApplication1iDadYOBIsEmpty() {
 		clickOn("#tabApp1");
@@ -419,6 +556,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is empty.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom name is empty
+	 * 
+	 */
 	@Test
 	public void testApplication1iMomYOBIsEmpty() {
 		clickOn("#tabApp1");
@@ -429,6 +571,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is empty.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad year of born with letters
+	 * 
+	 */
 	@Test
 	public void testApplication1iDadYOBIsNotInteger() {
 		clickOn("#tabApp1");
@@ -439,6 +586,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom year of born with letters
+	 * 
+	 */
 	@Test
 	public void testApplication1iMomYOBIsNotInteger() {
 		clickOn("#tabApp1");
@@ -449,6 +601,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not an integer.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad year of born is less than the earliest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1iDadYOBIsLessThanRange() {
 		clickOn("#tabApp1");
@@ -459,6 +616,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom year of born is less than the earliest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1iMomYOBIsLessThanRange() {
 		clickOn("#tabApp1");
@@ -469,6 +631,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test dad year of born is larger than the latest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1iDadYOBIsMoreThanRange() {
 		clickOn("#tabApp1");
@@ -479,6 +646,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Born Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test mom year of born is larger than the latest recorded year
+	 * 
+	 */
 	@Test
 	public void testApplication1iMomYOBIsMoreThanRange() {
 		clickOn("#tabApp1");
@@ -489,6 +661,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nMom Born Year is not in [1880, 2019].\n"));	
 	}
 	
+	
+	/**
+	 * Application 1 test case: test all inputs are empty
+	 * 
+	 */
 	@Test
 	public void testApplication1AllInputsAreEmpty() {
 		clickOn("#tabApp1");
@@ -505,6 +682,11 @@ public class JavaFXTest extends ApplicationTest {
 		assertTrue(s1.equals("Invalid input.\nDad Name is empty.\nMom Name is empty.\nDad Born Year is empty.\nMom Born Year is empty.\n"));
 	}
 	
+	
+	/**
+	 * Application 1 test case: test a valid vintage year
+	 * 
+	 */
 	@Test
 	public void testApplication1ChangeVintageYear() {
 		clickOn("#tabApp1");
@@ -516,6 +698,11 @@ public class JavaFXTest extends ApplicationTest {
 				AnalyzeNames.getName(1880, AnalyzeNames.getRank(1941,  "David", "M"), "M"), AnalyzeNames.getName(1880, AnalyzeNames.getRank(1945,  "Mary", "F"), "F"))));
 	}
 	
+	
+	/**
+	 * Application 1 test case: both parents' name not found
+	 * 
+	 */
 	@Test
 	public void testApplication1BothParentNameNotFound() {
 		clickOn("#tabApp1");

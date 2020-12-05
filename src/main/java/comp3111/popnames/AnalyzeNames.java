@@ -46,6 +46,10 @@ public class AnalyzeNames {
 		return oReport;
 	}
 	
+	/**
+	 * A program to remove BOM when retrieving name in csv
+	 * 
+	 */
 	public static final String UTF8_BOM = "\uFEFF";
 	
 	private static String removeUTF8BOM(String s) {
@@ -101,6 +105,14 @@ public class AnalyzeNames {
 	     	return "information on the name at the specified rank is not available";
 	 }
 	 
+	 /**
+	  * A program to get the number of born of a name of a gender in a certain year
+	  * @param year The year of born
+	  * @param name The name of the person
+	  * @param gender The gender of the person
+	  * @return The number of born of the given year, name and gender
+	  * 
+	  */
 	 public static int getNumberOfBorn(int year, String name, String gender) {
 	     boolean found = false;
 	     int oNumber = 0;
@@ -121,4 +133,3 @@ public class AnalyzeNames {
 	     	return -1;
 	 }
  
-}
