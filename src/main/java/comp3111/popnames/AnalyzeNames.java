@@ -46,6 +46,18 @@ public class AnalyzeNames {
 		return oReport;
 	}
 	
+	/**
+	 * A program to remove BOM when retrieving name in csv
+	 * 
+	 */
+	public static final String UTF8_BOM = "\uFEFF";
+	
+	private static String removeUTF8BOM(String s) {
+	    if (s.startsWith(UTF8_BOM)) {
+	        s = s.substring(1);
+	    }
+	    return s;
+	}
 	
 	 public static int getRank(int year, String name, String gender) {
 	     boolean found = false;
@@ -55,7 +67,7 @@ public class AnalyzeNames {
 	         // Increment rank if gender matches param
 	         if (rec.get(1).equals(gender)) {
 	             // Return rank if name matches param
-	             if (rec.get(0).equals(name)) {
+	             if (removeUTF8BOM(rec.get(0)).equals(name)) {
 	             	found = true;
 	             	oRank = rank;
 	             	break;
@@ -68,7 +80,6 @@ public class AnalyzeNames {
 	     else
 	     	return -1;
 	 }
-	 
  
 	 public static String getName(int year, int rank, String gender) {
 	 	boolean found = false;
@@ -83,7 +94,7 @@ public class AnalyzeNames {
 	         	currentRank++;
 	            if (currentRank == rank) {
 	             	found = true;
-	             	oName = rec.get(0);
+	             	oName = removeUTF8BOM(rec.get(0));
 	                break;
 	            }
 	         }
@@ -93,5 +104,32 @@ public class AnalyzeNames {
 	     else
 	     	return "information on the name at the specified rank is not available";
 	 }
+	 
+	 /**
+	  * A program to get the number of born of a name of a gender in a certain year
+	  * @param year The year of born
+	  * @param name The name of the person
+	  * @param gender The gender of the person
+	  * @return The number of born of the given year, name and gender
+	  * 
+	  */
+	 public static int getNumberOfBorn(int year, String name, String gender) {
+	     boolean found = false;
+	     int oNumber = 0;
+	     if (year >= 1880 && year <= 2019) {
+		     for (CSVRecord rec : getFileParser(year)) {
+		         if (rec.get(1).equals(gender)) {
+		             if (removeUTF8BOM(rec.get(0)).equals(name)) {
+		             	found = true;
+		             	oNumber = Integer.parseInt(rec.get(2));
+		             	break;
+		             }
+		         }
+		     }
+	     }
+	     if (found)
+	     	return oNumber;
+	     else
+	     	return -1;
+	 }
  
-}
