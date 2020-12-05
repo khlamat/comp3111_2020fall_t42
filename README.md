@@ -17,3 +17,5 @@ Task 3 & Task 6
 email: khlukab | github: ImCombo | dev branch: lkh_feature1
 
 Task 1 & Task 4
+
+Activity 1 URL: https://docs.google.com/document/d/1_2zPEU93FNGPCtt945bMJHsXLmalP0teWXyJVEPj_U0/edit
