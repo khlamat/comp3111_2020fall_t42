@@ -46,6 +46,14 @@ public class AnalyzeNames {
 		return oReport;
 	}
 	
+	public static final String UTF8_BOM = "\uFEFF";
+	
+	private static String removeUTF8BOM(String s) {
+	    if (s.startsWith(UTF8_BOM)) {
+	        s = s.substring(1);
+	    }
+	    return s;
+	}
 	
 	 public static int getRank(int year, String name, String gender) {
 	     boolean found = false;
@@ -55,7 +63,7 @@ public class AnalyzeNames {
 	         // Increment rank if gender matches param
 	         if (rec.get(1).equals(gender)) {
 	             // Return rank if name matches param
-	             if (rec.get(0).equals(name)) {
+	             if (removeUTF8BOM(rec.get(0)).equals(name)) {
 	             	found = true;
 	             	oRank = rank;
 	             	break;
@@ -68,7 +76,6 @@ public class AnalyzeNames {
 	     else
 	     	return -1;
 	 }
-	 
  
 	 public static String getName(int year, int rank, String gender) {
 	 	boolean found = false;
@@ -83,7 +90,7 @@ public class AnalyzeNames {
 	         	currentRank++;
 	            if (currentRank == rank) {
 	             	found = true;
-	             	oName = rec.get(0);
+	             	oName = removeUTF8BOM(rec.get(0));
 	                break;
 	            }
 	         }
@@ -100,7 +107,7 @@ public class AnalyzeNames {
 	     if (year >= 1880 && year <= 2019) {
 		     for (CSVRecord rec : getFileParser(year)) {
 		         if (rec.get(1).equals(gender)) {
-		             if (rec.get(0).equals(name)) {
+		             if (removeUTF8BOM(rec.get(0)).equals(name)) {
 		             	found = true;
 		             	oNumber = Integer.parseInt(rec.get(2));
 		             	break;

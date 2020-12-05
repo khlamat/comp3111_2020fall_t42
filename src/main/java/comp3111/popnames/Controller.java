@@ -279,6 +279,7 @@ public class Controller {
     				if (totalName[k].equals(name)) {
     					totalNumber[k] += AnalyzeNames.getNumberOfBorn(i, name, gender);
     					totalIsFound = true;
+    					break;
     				}
     			}
     			if (!totalIsFound) {
