@@ -10,185 +10,452 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern;
+/*https://www.geeksforgeeks.org/check-given-string-valid-number-integer-floating-point-java-set-2-regular-expression-approach/*/
 
 public class Controller {
 
-	@FXML
-	private Tab tabTaskZero;
+	  @FXML
+    private Tab tabTaskZero;
 
-	@FXML
-	private TextField textfieldNameF;
+    @FXML
+    private TextField textfieldNameF;
 
-	@FXML
-	private TextField textfieldYear;
+    @FXML
+    private TextField textfieldYear;
 
-	@FXML
-	private Button buttonRankM;
+    @FXML
+    private Button buttonRankM;
 
-	@FXML
-	private TextField textfieldNameM;
+    @FXML
+    private TextField textfieldNameM;
 
-	@FXML
-	private Button buttonRankF;
+    @FXML
+    private Button buttonRankF;
 
-	@FXML
-	private Button buttonTopM;
+    @FXML
+    private Button buttonTopM;
 
-	@FXML
-	private Button buttonTopF;
+    @FXML
+    private Button buttonTopF;
 
-	@FXML
-	private Button buttonSummary;
+    @FXML
+    private Button buttonSummary;
 
-	@FXML
-	private Tab tabReport1;
+    @FXML
+    private Tab tabReport1;
 
-	@FXML
-	private ToggleGroup T1;
+    @FXML
+    private RadioButton task1F;
 
-	@FXML
-	private Tab tabReport2;
+    @FXML
+    private ToggleGroup T1;
 
-	@FXML
-	private TextField t2startingyear;
+    @FXML
+    private TextField task1TopN;
 
-	@FXML
-	private TextField t2name;
+    @FXML
+    private RadioButton task1M;
 
-	@FXML
-	private RadioButton t2m;
+    @FXML
+    private TextField task1EndingYear;
 
-	@FXML
-	private ToggleGroup T11;
+    @FXML
+    private TextField task1StartingYear;
 
-	@FXML
-	private RadioButton t2f;
+    @FXML
+    private Button task1Report;
 
-	@FXML
-	private TextField t2endingyear;
+    @FXML
+    private Tab tabReport2;
 
-	@FXML
-	private Button doreport2;
+  	@FXML
+	  private TextField t2startingyear;
 
-	@FXML
-	private Tab tabReport3;
+	  @FXML
+  	private TextField t2name;
 
-	@FXML
-	private ToggleGroup T111;
+	  @FXML
+  	private RadioButton t2m;
 
-	@FXML
-	private Tab tabApp1;
+	  @FXML
+	  private ToggleGroup T11;
 
-	@FXML
-	private Tab tabApp2;
+	  @FXML
+  	private RadioButton t2f;
 
-	@FXML
-	private TextField t5name;
+	  @FXML
+	  private TextField t2endingyear;
 
-	@FXML
-	private TextField t5year;
+	  @FXML
+	  private Button doreport2;
 
-	@FXML
-	private RadioButton t5male;
+    @FXML
+    private ToggleGroup T11;
 
-	@FXML
-	private RadioButton t5female;
+    @FXML
+    private Tab tabReport3;
 
-	@FXML
-	private RadioButton t5imale;
+    @FXML
+    private ToggleGroup T111;
 
-	@FXML
-	private RadioButton t5younger;
+    @FXML
+    private Tab tabApp1;
 
-	@FXML
-	private RadioButton t5ifemale;
+    @FXML
+    private Button application1Reoprt;
 
-	@FXML
-	private RadioButton t5older;
+    @FXML
+    private TextField task4iMomName;
 
-	@FXML
-	private Button dot5;
+    @FXML
+    private TextField task4iDadYOB;
 
-	@FXML
-	private Tab tabApp3;
+    @FXML
+    private TextField task4iMomYOB;
 
-	@FXML
-	private TextArea textAreaConsole;
+    @FXML
+    private TextField task4iDadName;
 
-	/**
-	 * Task Zero To be triggered by the "Summary" button on the Task Zero Tab
-	 * 
-	 */
-	@FXML
-	void doSummary() {
-		int year = Integer.parseInt(textfieldYear.getText());
-		String oReport = AnalyzeNames.getSummary(year);
-		textAreaConsole.setText(oReport);
-	}
+    @FXML
+    private TextField task4iVintageYear;
 
-	/**
-	 * Task Zero To be triggered by the "Rank (female)" button on the Task Zero Tab
-	 * 
-	 */
-	@FXML
-	void doRankF() {
-		String oReport = "";
-		String iNameF = textfieldNameF.getText();
-		int iYear = Integer.parseInt(textfieldYear.getText());
-		int oRank = AnalyzeNames.getRank(iYear, iNameF, "F");
-		if (oRank == -1)
-			oReport = String.format("The name %s (female) has not been ranked in the year %d.\n", iNameF, iYear);
-		else
-			oReport = String.format("Rank of %s (female) in year %d is #%d.\n", iNameF, iYear, oRank);
-		textAreaConsole.setText(oReport);
-	}
+   	@FXML
+	  private Tab tabApp2;
 
-	/**
-	 * Task Zero To be triggered by the "Rank (male)" button on the Task Zero Tab
-	 * 
-	 */
-	@FXML
-	void doRankM() {
-		String oReport = "";
-		String iNameM = textfieldNameM.getText();
-		int iYear = Integer.parseInt(textfieldYear.getText());
-		int oRank = AnalyzeNames.getRank(iYear, iNameM, "M");
-		if (oRank == -1)
-			oReport = String.format("The name %s (male) has not been ranked in the year %d.\n", iNameM, iYear);
-		else
-			oReport = String.format("Rank of %s (male) in year %d is #%d.\n", iNameM, iYear, oRank);
-		textAreaConsole.setText(oReport);
-	}
+	  @FXML
+	  private TextField t5name;
 
-	/**
-	 * Task Zero To be triggered by the "Top 5 (female)" button on the Task Zero Tab
-	 * 
-	 */
-	@FXML
-	void doTopF() {
-		String oReport = "";
-		final int topN = 5;
-		int iYear = Integer.parseInt(textfieldYear.getText());
-		oReport = String.format("Top %d most popular names (female) in the year %d:\n", topN, iYear);
-		for (int i = 1; i <= topN; i++)
-			oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "F"));
-		textAreaConsole.setText(oReport);
-	}
+	  @FXML
+	  private TextField t5year;
 
-	/**
-	 * Task Zero To be triggered by the "Top 5 (male)" button on the Task Zero Tab
-	 * 
-	 */
-	@FXML
-	void doTopM() {
-		String oReport = "";
-		final int topN = 5;
-		int iYear = Integer.parseInt(textfieldYear.getText());
-		oReport = String.format("Top %d most popular names (male) in the year %d:\n", topN, iYear);
-		for (int i = 1; i <= topN; i++)
-			oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "M"));
-		textAreaConsole.setText(oReport);
-	}
+	  @FXML
+	  private RadioButton t5male;
+
+	  @FXML
+	  private RadioButton t5female;
+
+	  @FXML
+	  private RadioButton t5imale;
+
+	  @FXML
+	  private RadioButton t5younger;
+
+	  @FXML
+	  private RadioButton t5ifemale;
+
+	  @FXML
+	  private RadioButton t5older;
+
+	  @FXML
+	  private Button dot5;
+  
+    @FXML
+    private Tab tabApp3;
+
+    @FXML
+    private TextArea textAreaConsole;
+    
+
+    /**
+     *  Task Zero
+     *  To be triggered by the "Summary" button on the Task Zero Tab 
+     *  
+     */
+    @FXML
+    void doSummary() {
+    	int year = Integer.parseInt(textfieldYear.getText());
+    	String oReport = AnalyzeNames.getSummary(year);
+    	textAreaConsole.setText(oReport);
+    }
+
+  
+    /**
+     *  Task Zero
+     *  To be triggered by the "Rank (female)" button on the Task Zero Tab
+     *  
+     */
+    @FXML
+    void doRankF() {
+    	String oReport = "";
+    	String iNameF = textfieldNameF.getText();
+    	int iYear = Integer.parseInt(textfieldYear.getText());
+    	int oRank = AnalyzeNames.getRank(iYear, iNameF, "F");
+    	if (oRank == -1)
+    		oReport = String.format("The name %s (female) has not been ranked in the year %d.\n", iNameF, iYear);
+    	else
+    		oReport = String.format("Rank of %s (female) in year %d is #%d.\n", iNameF, iYear, oRank);
+    	textAreaConsole.setText(oReport);
+    }
+
+  
+    /**
+     *  Task Zero
+     *  To be triggered by the "Rank (male)" button on the Task Zero Tab
+     *  
+     */
+    @FXML
+    void doRankM() {
+    	String oReport = "";
+    	String iNameM = textfieldNameM.getText();
+    	int iYear = Integer.parseInt(textfieldYear.getText());
+    	int oRank = AnalyzeNames.getRank(iYear, iNameM, "M");
+    	if (oRank == -1)
+    		oReport = String.format("The name %s (male) has not been ranked in the year %d.\n", iNameM, iYear);
+    	else
+    		oReport = String.format("Rank of %s (male) in year %d is #%d.\n", iNameM, iYear, oRank);
+    	textAreaConsole.setText(oReport);
+    }
+
+
+    /**
+     *  Task Zero
+     *  To be triggered by the "Top 5 (female)" button on the Task Zero Tab
+     *  
+     */
+    @FXML
+    void doTopF() {
+    	String oReport = "";
+    	final int topN = 5;
+    	int iYear = Integer.parseInt(textfieldYear.getText());
+    	oReport = String.format("Top %d most popular names (female) in the year %d:\n", topN, iYear);
+    	for (int i=1; i<=topN; i++)
+    		oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "F"));
+    	textAreaConsole.setText(oReport);
+    }
+
+
+    /**
+     *  Task Zero
+     *  To be triggered by the "Top 5 (male)" button on the Task Zero Tab
+     *  
+     */
+    @FXML
+    void doTopM() {
+    	String oReport = "";
+    	final int topN = 5;
+    	int iYear = Integer.parseInt(textfieldYear.getText());
+    	oReport = String.format("Top %d most popular names (male) in the year %d:\n", topN, iYear);
+    	for (int i=1; i<=topN; i++)
+    		oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "M"));
+    	textAreaConsole.setText(oReport);
+    }
+    
+    String task1InputCheck() {
+    	String oReport = "";
+    	boolean startingYearValid = false;
+    	String regex = "[+-]?[0-9]+";
+    	Pattern p = Pattern.compile(regex);
+    	Matcher m;
+    	m = p.matcher(task1TopN.getText());
+    	if (task1TopN.getText().isEmpty()) {
+    		oReport += String.format("Top N is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task1TopN.getText()))){
+    		oReport += String.format("Top N is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task1TopN.getText())<1) {
+    		oReport += String.format("Top N is not positive.\n");
+    	}
+    	else if (Integer.parseInt(task1TopN.getText())>10000) {
+    		oReport += String.format("Top N is more than the number of recorded names for each year.\n");
+    	}
+    	m = p.matcher(task1StartingYear.getText());
+    	if (task1StartingYear.getText().isEmpty()) {
+    		oReport += String.format("StartingYear is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task1StartingYear.getText()))){
+    		oReport += String.format("StartingYear is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task1StartingYear.getText())<1880 || Integer.parseInt(task1StartingYear.getText())>2019) {
+    		oReport += String.format("StartingYear is not in [1880, 2019].\n");
+    	}
+    	else {
+    		startingYearValid = true;
+    	}
+    	m = p.matcher(task1EndingYear.getText());
+    	if (task1EndingYear.getText().isEmpty()) {
+    		oReport += String.format("EndingYear is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task1EndingYear.getText()))){
+    		oReport += String.format("EndingYear is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task1EndingYear.getText())<1880 || Integer.parseInt(task1EndingYear.getText())>2019) {
+    		oReport += String.format("EndingYear is not in [1880, 2019].\n");
+    	}
+    	else if (startingYearValid && Integer.parseInt(task1EndingYear.getText())<Integer.parseInt(task1StartingYear.getText())) {
+    		oReport += String.format("EndingYear should not be less than StartingYear.\n");
+    	}
+    	return oReport;
+    }
+    
+    String task1Result() {
+    	String oReport = "";
+    	String gender = "";
+    	int topN = Integer.parseInt(task1TopN.getText());
+    	int startingYear = Integer.parseInt(task1StartingYear.getText());
+    	int endingYear = Integer.parseInt(task1EndingYear.getText());
+    	if (task1M.isSelected())
+    		gender = "M";
+    	else
+    		gender = "F";
+    	int totalMax = 20000;
+    	String [] totalName = new String [totalMax];
+    	int [] totalNumber = new int [totalMax];
+    	int totalLength = 0;
+    	oReport = String.format("Year\t");
+    	for (int i=1; i<=topN; i++) {
+    		oReport += String.format("Top %-11d\t", i);
+    	}
+    	oReport += String.format("\n");
+    	for (int i=startingYear; i<=endingYear; i++) {
+    		oReport += String.format("%4d\t", i);
+    		for (int j=1; j<=topN; j++) {
+    			String name = AnalyzeNames.getName(i, j, gender);
+    			if (name.equals("information on the name at the specified rank is not available")) 
+    				break;
+    			oReport += String.format("%-15s\t", name);
+    		}
+    		oReport += String.format("\n");
+    	}
+    	for (int i = startingYear; i <= endingYear; i++) {
+    		for (int j = 1; j < 100; j++) {
+    			String name = AnalyzeNames.getName(i, j, gender);
+    			boolean totalIsFound = false;
+    			for (int k=0; k<totalLength; k++) {
+    				if (totalName[k].equals(name)) {
+    					totalNumber[k] += AnalyzeNames.getNumberOfBorn(i, name, gender);
+    					totalIsFound = true;
+    					break;
+    				}
+    			}
+    			if (!totalIsFound) {
+    				totalName[totalLength] = name;
+    				totalNumber[totalLength] = AnalyzeNames.getNumberOfBorn(i, name, gender);
+    				totalLength++;
+    			}
+    		}
+    	}
+    	int temp = 0;
+    	for (int i=0; i<totalLength; i++) {
+    		if (totalNumber[i]>totalNumber[temp])
+    			temp = i;
+    	}
+    	oReport += String.format("Over the period %d to %d, %s for %s has hold the top spot most often for a total of %s times.", startingYear, endingYear, totalName[temp], gender, totalNumber[temp]);
+    	return oReport;
+    }
+    
+    @FXML
+    void dotask1Report() {
+    	String oReport = "";
+    	oReport = task1InputCheck();
+    	if (!oReport.isEmpty()) {
+    		oReport = String.format("Invalid input.\n") + oReport;
+    		textAreaConsole.setText(oReport);
+    		return;
+    	}
+    	textAreaConsole.setText(task1Result());
+    }
+    
+    String application1InputCheck() {
+    	String oReport = "";
+    	String regexName = "[A-Z][a-z]+";
+    	String regexYear = "[+-]?[0-9]+";
+    	Pattern pName = Pattern.compile(regexName);
+    	Pattern pYear = Pattern.compile(regexYear);
+    	Matcher m;
+    	String iDadName = task4iDadName.getText();
+    	m = pName.matcher(iDadName);
+    	if (iDadName.isEmpty()) {
+    		oReport += String.format("Dad Name is empty.\n");
+    		
+    	}
+    	else if (!(m.find() && m.group().equals(iDadName))) {
+    		oReport += String.format("Dad Name is invalid.\n");
+    	}
+    	String iMomName = task4iMomName.getText();
+    	m = pName.matcher(iMomName);
+    	if (iMomName.isEmpty()) {
+    		oReport += String.format("Mom Name is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(iMomName))) {
+    		oReport += String.format("Mom Name is invalid.\n");
+    	}
+    	m = pYear.matcher(task4iDadYOB.getText());
+    	if (task4iDadYOB.getText().isEmpty()) {
+    		oReport += String.format("Dad Born Year is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task4iDadYOB.getText()))){
+    		oReport += String.format("Dad Born Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iDadYOB.getText())<1880 || Integer.parseInt(task4iDadYOB.getText())>2019) {
+    		oReport += String.format("Dad Born Year is not in [1880, 2019].\n");
+    	}
+    	m = pYear.matcher(task4iMomYOB.getText());
+    	if (task4iMomYOB.getText().isEmpty()) {
+    		oReport += String.format("Mom Born Year is empty.\n");
+    	}
+    	else if (!(m.find() && m.group().equals(task4iMomYOB.getText()))){
+    		oReport += String.format("Mom Born Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iMomYOB.getText())<1880 || Integer.parseInt(task4iMomYOB.getText())>2019) {
+    		oReport += String.format("Mom Born Year is not in [1880, 2019].\n");
+    	}
+    	m = pYear.matcher(task4iVintageYear.getText());
+    	if (task4iVintageYear.getText().isEmpty()) {
+    	}
+    	else if (!(m.find() && m.group().equals(task4iVintageYear.getText()))) {
+    		oReport += String.format("Vintage Year is not an integer.\n");
+    	}
+    	else if (Integer.parseInt(task4iVintageYear.getText())<1880 || Integer.parseInt(task4iVintageYear.getText())>2019) {
+    		oReport += String.format("Vintage Year is not in [1880, 2019].\n");
+    	}
+    	return oReport;
+    }
+    
+    String NKT4Algorithm(String iName, int iYOB, String gender, int vintageYear){
+    	String oName;
+    	int iRank = AnalyzeNames.getRank(iYOB, iName, gender);
+    	if (iRank == -1) {
+    		oName = AnalyzeNames.getName(vintageYear, 1, gender);
+    	}
+    	else {
+    		oName = AnalyzeNames.getName(vintageYear, iRank, gender);
+    	}
+    	return oName;
+    }
+    
+    String application1Result() {
+    	String oReport = "";
+    	String iDadName = task4iDadName.getText();
+    	String iMomName = task4iMomName.getText();
+    	int iDadYOB = Integer.parseInt(task4iDadYOB.getText());
+    	int iMomYOB = Integer.parseInt(task4iMomYOB.getText());
+    	int vintageYear;
+    	if (task4iVintageYear.getText().isEmpty()) {
+    		vintageYear = 2019;
+    	}
+    	else {
+    		vintageYear = Integer.parseInt(task4iVintageYear.getText());
+    	}
+    	String boyName = NKT4Algorithm(iDadName, iDadYOB, "M", vintageYear);
+    	String girlName = NKT4Algorithm(iMomName, iMomYOB, "F", vintageYear);
+    	oReport = String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.", boyName, girlName);
+    	return oReport;
+    }
+    
+    @FXML
+    void doApplication1Report() {
+    	 String oReport = application1InputCheck();
+    	 if (!oReport.isEmpty()) {
+    		 oReport = String.format("Invalid input.\n") + oReport;
+    		 textAreaConsole.setText(oReport);
+    		 return;
+    	 }
+    	 textAreaConsole.setText(application1Result());
+    }
+}
 
 	@FXML
 	void report2() {

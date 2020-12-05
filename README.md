@@ -8,6 +8,10 @@ Task 2 & Task 5
 
 2. Leung Wai Chak
 
+email: wcleungag | github: Ehrick | dev branch: wcleungag_feature1
+
+Task 3 & Task 6
+
 3. Luk Ka Ho
 
 email: khlukab | github: ImCombo | dev branch: lkh_feature1
