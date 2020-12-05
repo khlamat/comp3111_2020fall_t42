@@ -55,7 +55,7 @@ public class AnalyzeNames {
 	         // Increment rank if gender matches param
 	         if (rec.get(1).equals(gender)) {
 	             // Return rank if name matches param
-	             if (rec.get(0).equals(name)) {
+	             if ((Task2and5_Checker.removeUTF8BOM(rec.get(0))).equals(name)) {
 	             	found = true;
 	             	oRank = rank;
 	             	break;

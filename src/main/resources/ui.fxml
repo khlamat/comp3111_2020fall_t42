@@ -11,6 +11,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="679.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.popnames.Controller">
   <children>
@@ -67,27 +68,23 @@
                   <content>
                         <AnchorPane>
                            <children>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="722.0">
+                          <AnchorPane layoutX="6.0" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="722.0">
                                  <children>
+                                    <TextField fx:id="t2startingyear" layoutX="223.0" layoutY="123.0" prefHeight="26.0" prefWidth="43.0" text="1941" />
                                     <TextArea layoutX="109.0" layoutY="33.0" prefHeight="42.0" prefWidth="335.0" text="Generate a brief report in response to the queries on the popularity of a particular name over a given period." wrapText="true" />
                                     <Label layoutX="109.0" layoutY="93.0" text="Name" />
-                                    <TextField layoutX="159.0" layoutY="88.0" prefHeight="26.0" prefWidth="88.0" text="David" />
+                                    <TextField fx:id="t2name" layoutX="159.0" layoutY="88.0" prefHeight="26.0" prefWidth="88.0" text="David" />
                                     <Label layoutX="277.0" layoutY="93.0" text="Gender: " />
-                                    <RadioButton layoutX="332.0" layoutY="93.0" mnemonicParsing="false" selected="true" text="Male">
+                                    <RadioButton fx:id="t2m" layoutX="332.0" layoutY="93.0" mnemonicParsing="false" selected="true" text="Male">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="T11" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton layoutX="384.0" layoutY="93.0" mnemonicParsing="false" text="Female">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="T11" />
-                                       </toggleGroup>
-                                    </RadioButton>
+                                    <RadioButton fx:id="t2f" layoutX="384.0" layoutY="93.0" mnemonicParsing="false" text="Female" toggleGroup="$T11" />
                                     <Label layoutX="109.0" layoutY="129.0" text="Period (1880 - 2019): " />
-                                    <TextField layoutX="289.0" layoutY="123.0" prefHeight="26.0" prefWidth="43.0" text="1945" />
-                                    <TextField layoutX="223.0" layoutY="123.0" prefHeight="26.0" prefWidth="43.0" text="1941" />
+                                    <TextField fx:id="t2endingyear" layoutX="289.0" layoutY="123.0" prefHeight="26.0" prefWidth="43.0" text="1945" />
                                     <Label layoutX="271.0" layoutY="127.0" text="to" />
-                                    <Button layoutX="108.0" layoutY="169.0" mnemonicParsing="false" text="REPORT (yet to be implemented)" />
+                                    <Button fx:id="doreport2" layoutX="108.0" layoutY="169.0" mnemonicParsing="false" onAction="#report2" text="REPORT2" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -132,11 +129,37 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab fx:id="tabApp2" text="Application 2">
+                  <Tab fx:id="tabApp2" text="      FindPair      ">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea layoutX="40.0" layoutY="27.0" prefHeight="242.0" prefWidth="638.0" text="Develop and implement an online service using empirical data to help make informed decisions on predicting names for compatible pairs.  Sample Scenario of Application: (i) A person seeking advices on identifying the name of a person of a different gender who would become his/her soulmate; (ii) A person seeking advices on identifying the name of a person of the same gender who would become his/her soulmate.&#10;&#10;Input&#10;* iName, iGender, iYOB: Particulars of the person seeking advices&#10;* iGenderMate: Specify the gender of the soulmate to be matched&#10;* iPreference: Specify the preference on having a younger or older soulmate&#10;&#10;Output&#10;* oName: Recommended name of the soulmate according to the NK-T5 Algorithm&#10;* plus, WOW factor on user experience and algorithm design!" wrapText="true" />
+                              <TextArea layoutX="40.0" layoutY="27.0" prefHeight="44.0" prefWidth="638.0" text="This is an online service using empirical data to help make informed decisions on predicting names for compatible pairs.  Let come to predict your future soulmate!!!" wrapText="true" />
+                              <Label layoutX="116.0" layoutY="95.0" text="iName" />
+                              <TextField fx:id="t5name" layoutX="168.0" layoutY="91.0" prefHeight="23.0" prefWidth="89.0" text="David" />
+                              <Label layoutX="330.0" layoutY="95.0" prefHeight="15.0" prefWidth="79.0" text="iGenderMate:" />
+                              <Label layoutX="116.0" layoutY="128.0" text="iGender:" />
+                              <Label layoutX="117.0" layoutY="160.0" text="iYOB:" />
+                              <Label layoutX="330.0" layoutY="128.0" text="iPreference:" />
+                              <TextField fx:id="t5year" layoutX="168.0" layoutY="156.0" prefHeight="23.0" prefWidth="89.0" text="1941" />
+                              <RadioButton fx:id="t5male" layoutX="169.0" layoutY="128.0" mnemonicParsing="false" selected="true" text="Male">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="T221" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="t5female" layoutX="237.0" layoutY="128.0" mnemonicParsing="false" text="Female" toggleGroup="$T221" />
+                              <RadioButton fx:id="t5imale" layoutX="412.0" layoutY="95.0" mnemonicParsing="false" text="Male">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="T222" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="t5younger" layoutX="412.0" layoutY="128.0" mnemonicParsing="false" selected="true" text="Younger">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="T223" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="t5ifemale" layoutX="491.0" layoutY="94.0" mnemonicParsing="false" selected="true" text="Female" toggleGroup="$T222" />
+                              <RadioButton fx:id="t5older" layoutX="491.0" layoutY="128.0" mnemonicParsing="false" text="Older" toggleGroup="$T223" />
+                              <Button fx:id="dot5" layoutX="117.0" layoutY="194.0" mnemonicParsing="false" onAction="#t5" prefHeight="23.0" prefWidth="90.0" text="Find Pair" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -157,7 +180,10 @@
       <Label text="Console" />
       <ScrollPane prefHeight="387.0" prefWidth="719.0">
          <content>
-            <TextArea fx:id="textAreaConsole" prefHeight="300.0" prefWidth="718.0" />
+            <TextArea fx:id="textAreaConsole" prefHeight="300.0" prefWidth="718.0">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font></TextArea>
          </content>
       </ScrollPane>
   </children>

@@ -5,6 +5,7 @@ package comp3111.popnames;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,148 +13,217 @@ import javafx.scene.control.ToggleGroup;
 
 public class Controller {
 
-    @FXML
-    private Tab tabTaskZero;
+	@FXML
+	private Tab tabTaskZero;
 
-    @FXML
-    private TextField textfieldNameF;
+	@FXML
+	private TextField textfieldNameF;
 
-    @FXML
-    private TextField textfieldYear;
+	@FXML
+	private TextField textfieldYear;
 
-    @FXML
-    private Button buttonRankM;
+	@FXML
+	private Button buttonRankM;
 
-    @FXML
-    private TextField textfieldNameM;
+	@FXML
+	private TextField textfieldNameM;
 
-    @FXML
-    private Button buttonRankF;
+	@FXML
+	private Button buttonRankF;
 
-    @FXML
-    private Button buttonTopM;
+	@FXML
+	private Button buttonTopM;
 
-    @FXML
-    private Button buttonTopF;
+	@FXML
+	private Button buttonTopF;
 
-    @FXML
-    private Button buttonSummary;
-    
-    @FXML
-    private Tab tabReport1;
+	@FXML
+	private Button buttonSummary;
 
-    @FXML
-    private ToggleGroup T1;
+	@FXML
+	private Tab tabReport1;
 
-    @FXML
-    private Tab tabReport2;
+	@FXML
+	private ToggleGroup T1;
 
-    @FXML
-    private ToggleGroup T11;
+	@FXML
+	private Tab tabReport2;
 
-    @FXML
-    private Tab tabReport3;
+	@FXML
+	private TextField t2startingyear;
 
-    @FXML
-    private ToggleGroup T111;
+	@FXML
+	private TextField t2name;
 
-    @FXML
-    private Tab tabApp1;
+	@FXML
+	private RadioButton t2m;
 
-    @FXML
-    private Tab tabApp2;
+	@FXML
+	private ToggleGroup T11;
 
-    @FXML
-    private Tab tabApp3;
+	@FXML
+	private RadioButton t2f;
 
-    @FXML
-    private TextArea textAreaConsole;
-    
+	@FXML
+	private TextField t2endingyear;
 
-    /**
-     *  Task Zero
-     *  To be triggered by the "Summary" button on the Task Zero Tab 
-     *  
-     */
-    @FXML
-    void doSummary() {
-    	int year = Integer.parseInt(textfieldYear.getText());
-    	String oReport = AnalyzeNames.getSummary(year);
-    	textAreaConsole.setText(oReport);
-    }
+	@FXML
+	private Button doreport2;
 
-  
-    /**
-     *  Task Zero
-     *  To be triggered by the "Rank (female)" button on the Task Zero Tab
-     *  
-     */
-    @FXML
-    void doRankF() {
-    	String oReport = "";
-    	String iNameF = textfieldNameF.getText();
-    	int iYear = Integer.parseInt(textfieldYear.getText());
-    	int oRank = AnalyzeNames.getRank(iYear, iNameF, "F");
-    	if (oRank == -1)
-    		oReport = String.format("The name %s (female) has not been ranked in the year %d.\n", iNameF, iYear);
-    	else
-    		oReport = String.format("Rank of %s (female) in year %d is #%d.\n", iNameF, iYear, oRank);
-    	textAreaConsole.setText(oReport);
-    }
+	@FXML
+	private Tab tabReport3;
 
-  
-    /**
-     *  Task Zero
-     *  To be triggered by the "Rank (male)" button on the Task Zero Tab
-     *  
-     */
-    @FXML
-    void doRankM() {
-    	String oReport = "";
-    	String iNameM = textfieldNameM.getText();
-    	int iYear = Integer.parseInt(textfieldYear.getText());
-    	int oRank = AnalyzeNames.getRank(iYear, iNameM, "M");
-    	if (oRank == -1)
-    		oReport = String.format("The name %s (male) has not been ranked in the year %d.\n", iNameM, iYear);
-    	else
-    		oReport = String.format("Rank of %s (male) in year %d is #%d.\n", iNameM, iYear, oRank);
-    	textAreaConsole.setText(oReport);
-    }
+	@FXML
+	private ToggleGroup T111;
 
+	@FXML
+	private Tab tabApp1;
 
-    /**
-     *  Task Zero
-     *  To be triggered by the "Top 5 (female)" button on the Task Zero Tab
-     *  
-     */
-    @FXML
-    void doTopF() {
-    	String oReport = "";
-    	final int topN = 5;
-    	int iYear = Integer.parseInt(textfieldYear.getText());
-    	oReport = String.format("Top %d most popular names (female) in the year %d:\n", topN, iYear);
-    	for (int i=1; i<=topN; i++)
-    		oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "F"));
-    	textAreaConsole.setText(oReport);
-    }
+	@FXML
+	private Tab tabApp2;
 
+	@FXML
+	private TextField t5name;
 
-    /**
-     *  Task Zero
-     *  To be triggered by the "Top 5 (male)" button on the Task Zero Tab
-     *  
-     */
-    @FXML
-    void doTopM() {
-    	String oReport = "";
-    	final int topN = 5;
-    	int iYear = Integer.parseInt(textfieldYear.getText());
-    	oReport = String.format("Top %d most popular names (male) in the year %d:\n", topN, iYear);
-    	for (int i=1; i<=topN; i++)
-    		oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "M"));
-    	textAreaConsole.setText(oReport);
-    }
-    
+	@FXML
+	private TextField t5year;
 
+	@FXML
+	private RadioButton t5male;
+
+	@FXML
+	private RadioButton t5female;
+
+	@FXML
+	private RadioButton t5imale;
+
+	@FXML
+	private RadioButton t5younger;
+
+	@FXML
+	private RadioButton t5ifemale;
+
+	@FXML
+	private RadioButton t5older;
+
+	@FXML
+	private Button dot5;
+
+	@FXML
+	private Tab tabApp3;
+
+	@FXML
+	private TextArea textAreaConsole;
+
+	/**
+	 * Task Zero To be triggered by the "Summary" button on the Task Zero Tab
+	 * 
+	 */
+	@FXML
+	void doSummary() {
+		int year = Integer.parseInt(textfieldYear.getText());
+		String oReport = AnalyzeNames.getSummary(year);
+		textAreaConsole.setText(oReport);
+	}
+
+	/**
+	 * Task Zero To be triggered by the "Rank (female)" button on the Task Zero Tab
+	 * 
+	 */
+	@FXML
+	void doRankF() {
+		String oReport = "";
+		String iNameF = textfieldNameF.getText();
+		int iYear = Integer.parseInt(textfieldYear.getText());
+		int oRank = AnalyzeNames.getRank(iYear, iNameF, "F");
+		if (oRank == -1)
+			oReport = String.format("The name %s (female) has not been ranked in the year %d.\n", iNameF, iYear);
+		else
+			oReport = String.format("Rank of %s (female) in year %d is #%d.\n", iNameF, iYear, oRank);
+		textAreaConsole.setText(oReport);
+	}
+
+	/**
+	 * Task Zero To be triggered by the "Rank (male)" button on the Task Zero Tab
+	 * 
+	 */
+	@FXML
+	void doRankM() {
+		String oReport = "";
+		String iNameM = textfieldNameM.getText();
+		int iYear = Integer.parseInt(textfieldYear.getText());
+		int oRank = AnalyzeNames.getRank(iYear, iNameM, "M");
+		if (oRank == -1)
+			oReport = String.format("The name %s (male) has not been ranked in the year %d.\n", iNameM, iYear);
+		else
+			oReport = String.format("Rank of %s (male) in year %d is #%d.\n", iNameM, iYear, oRank);
+		textAreaConsole.setText(oReport);
+	}
+
+	/**
+	 * Task Zero To be triggered by the "Top 5 (female)" button on the Task Zero Tab
+	 * 
+	 */
+	@FXML
+	void doTopF() {
+		String oReport = "";
+		final int topN = 5;
+		int iYear = Integer.parseInt(textfieldYear.getText());
+		oReport = String.format("Top %d most popular names (female) in the year %d:\n", topN, iYear);
+		for (int i = 1; i <= topN; i++)
+			oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "F"));
+		textAreaConsole.setText(oReport);
+	}
+
+	/**
+	 * Task Zero To be triggered by the "Top 5 (male)" button on the Task Zero Tab
+	 * 
+	 */
+	@FXML
+	void doTopM() {
+		String oReport = "";
+		final int topN = 5;
+		int iYear = Integer.parseInt(textfieldYear.getText());
+		oReport = String.format("Top %d most popular names (male) in the year %d:\n", topN, iYear);
+		for (int i = 1; i <= topN; i++)
+			oReport += String.format("#%d: %s\n", i, AnalyzeNames.getName(iYear, i, "M"));
+		textAreaConsole.setText(oReport);
+	}
+
+	@FXML
+	void report2() {
+		String oReport = Task2.check(t2name, t2startingyear, t2endingyear, t2m, t2f);
+		if (oReport.isEmpty() == false) {
+			oReport = "There are some invalid input, below is the summary.\n" + oReport;
+			textAreaConsole.setWrapText(true);
+			textAreaConsole.setText(oReport);
+			return;
+		}
+		Task2 task2 = new Task2(t2name, t2startingyear, t2endingyear, t2m, t2f);
+		oReport += String.format("%15s%15s%15s%15s\n", "Year", "Rank", "Count", "Percentage");
+		for (int i = task2.getend(); i >= task2.getstart(); i--) {
+			oReport += task2.rowdetail(i);
+		}
+		oReport += task2.summary();
+		textAreaConsole.setWrapText(true);
+		textAreaConsole.setText(oReport);
+		return;
+	}
+
+	@FXML
+	void t5() {
+		String oReport = Task5.check(t5name, t5year, t5male, t5female, t5imale, t5ifemale, t5younger, t5older);
+		if (oReport.isEmpty() == false) {
+			oReport = "There are some invalid input, below is the summary.\n" + oReport;
+			textAreaConsole.setWrapText(true);
+			textAreaConsole.setText(oReport);
+			return;
+		}
+		Task5 task5 = new Task5(t5name, t5year, t5male, t5female, t5imale, t5ifemale, t5younger, t5older);
+		String oname = task5.NK_T5Algorithm();
+		oReport += String.format("The recommanded names for compatible pairs is %s.", oname);
+		textAreaConsole.setWrapText(true);
+		textAreaConsole.setText(oReport);
+		return;
+	}
 }
-
