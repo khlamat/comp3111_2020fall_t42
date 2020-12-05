@@ -194,6 +194,7 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
+    
     /**
      * Task 1
      * A function to check the input of task 1
@@ -247,6 +248,7 @@ public class Controller {
     	}
     	return oReport;
     }
+    
     
     /**
      * Task 1
@@ -310,6 +312,7 @@ public class Controller {
     	return oReport;
     }
     
+    
     /**
      * Task 1
      * To be triggered by the "REPORT" button on the Task 1 Tab
@@ -326,6 +329,7 @@ public class Controller {
     	}
     	textAreaConsole.setText(task1Result());
     }
+    
     
     /**
      * Application 1
@@ -389,6 +393,7 @@ public class Controller {
     	return oReport;
     }
     
+    
     /**
      * Application 1
      * A function that will return the name of the given parent name, parent year of born, gender and a vintage year in App 1
@@ -410,6 +415,7 @@ public class Controller {
     	}
     	return oName;
     }
+    
     
     /**
      * Application 1
@@ -435,6 +441,7 @@ public class Controller {
     	oReport = String.format("Recommended name for baby boy according to the NK-T4 Algorithm is %s.\nRecommended name for baby girl according to the NK-T4 Algorithm is %s.", boyName, girlName);
     	return oReport;
     }
+    
     
     /**
      * Application 1
