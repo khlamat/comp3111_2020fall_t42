@@ -13,7 +13,16 @@ public class Task2 {
 	private int maxyear;
 	private int maxcount;
 	private float maxpercentage;
-
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param t2name           target name
+	 * @param t2startingyear    target startingyear
+	 * @param t2endingyear          target endingyear
+	 * @param t2m           target gender 
+	 * @param t2f      target gender
+	 */
 	public Task2(TextField t2name, TextField t2startingyear, TextField t2endingyear, RadioButton t2m, RadioButton t2f) {
 		iname = t2name.getText();
 		start = Integer.parseInt(t2startingyear.getText());
@@ -32,6 +41,16 @@ public class Task2 {
 		maxpercentage = 0;
 	}
 	
+	/**
+	 * Function that check the validation of input by using function in Task2and5_Checker
+	 * 
+	 * @param t2name           target name
+	 * @param t2startingyear    target startingyear
+	 * @param t2endingyear          target endingyear
+	 * @param t2m           target gender 
+	 * @param t2f      target gender
+	 * @return  	return the what is missed/error or empty string if no error
+	 */
 	public static String check(TextField t2name, TextField t2startingyear, TextField t2endingyear, RadioButton t2m,
 			RadioButton t2f) {
 		String oReport = "";
@@ -47,22 +66,44 @@ public class Task2 {
 		return oReport;
 	}
 	
+	/**
+	 * Function that return starting year
+	 * @return  	return starting year
+	 */
 	public int getstart() {
 		return start;
 	}
+	
+	/**
+	 * Function that return ending year
+	 * @return  	return ending year
+	 */
 	public int getend() {
 		return end;
 	}
+	
+	/**
+	 * Function that update the end count and percentage
+	 */
 	private void endupdate(int count,float percentage) {
 		endcount = count;
 		endpercentage = percentage;
 	}
+	
+	/**
+	 * Function that update current max year, count and percentage
+	 */
 	private void maxupdate(int i,int count,float percentage) {
 		maxyear = i;
 		maxcount = count;
 		maxpercentage = percentage;
 	}
-
+	
+	/**
+	 * Function that return the row detail
+	 * @param i      target year
+	 * @return		 return the row detail
+	 */
 	public String rowdetail(int i) {
 		int rank = AnalyzeNames.getRank(i, iname, gender);
 		int count = Task2and5_Checker.rowcount(i, iname, gender);
@@ -85,7 +126,11 @@ public class Task2 {
 		}
 		return row;
 	}
-
+	
+	/**
+	 * Function that return the summary at the end
+	 * @return		 return the summary
+	 */
 	public String summary() {
 		String summary = "";
 		String gen=gender;

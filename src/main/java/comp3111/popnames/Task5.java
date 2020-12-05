@@ -9,7 +9,19 @@ public class Task5 {
 	private int iyob;
 	private String igendermate;
 	private String perfer;
-
+	
+	/**
+	 * Constructor for construct the detail from TextField/RadioButton to String/int
+	 * 
+	 * @param t5name           target name
+	 * @param t5year    target YOB
+	 * @param t5male          target gender
+	 * @param t5female      target gender
+	 * @param t5imale           target imategender 
+	 * @param t5ifemale      target imategender
+	 * @param t5younger           target preference 
+	 * @param t5older      target preference
+	 */
 	public Task5(TextField t5name, TextField t5year, RadioButton t5male, RadioButton t5female, RadioButton t5imale,
 			RadioButton t5ifemale, RadioButton t5younger, RadioButton t5older) {
 		iname = t5name.getText();
@@ -36,7 +48,19 @@ public class Task5 {
 		}
 
 	}
-
+	/**
+	 * Function that check the validation of input by using function in Task2and5_Checker
+	 * 
+	 * @param t5name           target name
+	 * @param t5year    target YOB
+	 * @param t5male          target gender
+	 * @param t5female      target gender
+	 * @param t5imale           target imategender 
+	 * @param t5ifemale      target imategender
+	 * @param t5younger           target preference 
+	 * @param t5older      target preference
+	 * @return  	return the what is missed/error or empty string if no error
+	 */
 	public static String check(TextField t5name, TextField t5year, RadioButton t5male, RadioButton t5female,
 			RadioButton t5imale, RadioButton t5ifemale, RadioButton t5younger, RadioButton t5older) {
 		String oReport = "";
@@ -65,7 +89,12 @@ public class Task5 {
 		}
 		return oReport;
 	}
-
+	
+	/**
+	 * Function that compute predicted name
+	 * 
+	 * @return  	return the result computed by the algorithm
+	 */
 	public String NK_T5Algorithm() {
 		int orank = 0;
 		orank = AnalyzeNames.getRank(iyob, iname, igender);

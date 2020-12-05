@@ -2,15 +2,12 @@ package comp3111.popnames;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit.ApplicationTest;
 
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 public class Task5Test extends ApplicationTest {
@@ -182,80 +179,6 @@ public class Task5Test extends ApplicationTest {
 		String s1 = t.getText();
 		assertTrue(s1.equals("The recommanded names for compatible pairs is Bessie."));
 	}
-	
-	@Test
-	public void testTask52019younger(){
-		clickOn("#tabApp2");
-		TextField t5Name = (TextField)s.lookup("#t5name");
-		t5Name.setText("Oliver");
-		RadioButton t5male = (RadioButton)s.lookup("#t5male");
-		t5male.setSelected(true);
-		TextField t5year = (TextField)s.lookup("#t5year");
-		t5year.setText("2019");
-		RadioButton t5ifemale = (RadioButton)s.lookup("#t5ifemale");
-		t5ifemale.setSelected(true);
-		RadioButton t5younger = (RadioButton)s.lookup("#t5younger");
-		t5younger.setSelected(true);
-		clickOn("#dot5");
-		String s1 = t.getText();
-		assertTrue(s1.equals("There are some invalid input, below is the summary.\n" + 
-				"dataset is up to 2019, we cannot predict your younger soulmate. Sorry for inconvenience.\n"));
-	}
-	
-	@Test
-	public void testTask52019older(){
-		clickOn("#tabApp2");
-		TextField t5Name = (TextField)s.lookup("#t5name");
-		t5Name.setText("Jackson");
-		RadioButton t5male = (RadioButton)s.lookup("#t5male");
-		t5male.setSelected(true);
-		TextField t5year = (TextField)s.lookup("#t5year");
-		t5year.setText("2019");
-		RadioButton t5ifemale = (RadioButton)s.lookup("#t5ifemale");
-		t5ifemale.setSelected(true);
-		RadioButton t5older = (RadioButton)s.lookup("#t5older");
-		t5older.setSelected(true);
-		clickOn("#dot5");
-		String s1 = t.getText();
-		assertTrue(s1.equals("The recommanded names for compatible pairs is Sofia."));
-	}
-	
-	@Test
-	public void testTask51880younger(){
-		clickOn("#tabApp2");
-		TextField t5Name = (TextField)s.lookup("#t5name");
-		t5Name.setText("Ella");
-		RadioButton t5female = (RadioButton)s.lookup("#t5female");
-		t5female.setSelected(true);
-		TextField t5year = (TextField)s.lookup("#t5year");
-		t5year.setText("1880");
-		RadioButton t5imale = (RadioButton)s.lookup("#t5imale");
-		t5imale.setSelected(true);
-		RadioButton t5younger = (RadioButton)s.lookup("#t5younger");
-		t5younger.setSelected(true);
-		clickOn("#dot5");
-		String s1 = t.getText();
-		assertTrue(s1.equals("The recommanded names for compatible pairs is Walter."));
-	}
-	
-	@Test
-	public void testTask51880older(){
-		clickOn("#tabApp2");
-		TextField t5Name = (TextField)s.lookup("#t5name");
-		t5Name.setText("Clara");
-		RadioButton t5female = (RadioButton)s.lookup("#t5female");
-		t5female.setSelected(true);
-		TextField t5year = (TextField)s.lookup("#t5year");
-		t5year.setText("1880");
-		RadioButton t5imale = (RadioButton)s.lookup("#t5imale");
-		t5imale.setSelected(true);
-		RadioButton t5older = (RadioButton)s.lookup("#t5older");
-		t5older.setSelected(true);
-		clickOn("#dot5");
-		String s1 = t.getText();
-		assertTrue(s1.equals("There are some invalid input, below is the summary.\n" + 
-				"dataset is down to 1880, we cannot predict your older soulmate. Sorry for inconvenience.\n"));
-	}
 
 	@Test
 	public void testTask5EmptyInput() {	
@@ -376,7 +299,7 @@ public class Task5Test extends ApplicationTest {
 	}
 	
 	@Test
-	public void testTask5missingradio() {	
+	public void testTask5missingender() {	
 		//it is impossible in the real application due to the default value
 		clickOn("#tabApp2");
 		TextField t5Name = (TextField)s.lookup("#t5name");
@@ -396,11 +319,6 @@ public class Task5Test extends ApplicationTest {
 				+ "iGenderMate is missing. Please select a gender.\n"
 				+ "iPerference is missing. Please select a iPerference.\n"));
 	}
-
-	//in 1996,the last rank of male and female are 10530(Zyler) and 15889(Zyesha) respectively
-	 //       the rank 1 of male and female are Michael	and Emily respectively.
-	//in 1997,the last rank of male and female are 10810(Zohar) and 16155(Zykerria) 
-	//        the rank 1 of male and female are Michael	and Emily respectively.
 	
 	@Test
 	public void testTask5algorithmspecialcase1() {
