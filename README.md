@@ -1,14 +1,19 @@
 T-42 https://github.com/khlamat/comp3111_2020fall_t42
 
 1. Lam Ka Hing
+
 email: khlamat | github: khlamat | dev branch: khlamat_feature1
 
 Task 2 & Task 5
 
 2. Leung Wai Chak
 
+email: wcleungag | github: Ehrick | dev branch: wcleungag_feature1
+
+Task 3 & Task 6
+
 3. Luk Ka Ho
 
-email: khlukab | github: ImCombo | dev branch: lkh_development
+email: khlukab | github: ImCombo | dev branch: lkh_feature1
 
 Task 1 & Task 4

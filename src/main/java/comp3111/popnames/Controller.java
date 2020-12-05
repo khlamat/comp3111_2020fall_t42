@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 public class Controller {
 
-	@FXML
+	  @FXML
     private Tab tabTaskZero;
 
     @FXML
@@ -70,6 +70,27 @@ public class Controller {
     @FXML
     private Tab tabReport2;
 
+  	@FXML
+	  private TextField t2startingyear;
+
+	  @FXML
+  	private TextField t2name;
+
+	  @FXML
+  	private RadioButton t2m;
+
+	  @FXML
+	  private ToggleGroup T11;
+
+	  @FXML
+  	private RadioButton t2f;
+
+	  @FXML
+	  private TextField t2endingyear;
+
+	  @FXML
+	  private Button doreport2;
+
     @FXML
     private ToggleGroup T11;
 
@@ -100,9 +121,36 @@ public class Controller {
     @FXML
     private TextField task4iVintageYear;
 
-    @FXML
-    private Tab tabApp2;
+   	@FXML
+	  private Tab tabApp2;
 
+	  @FXML
+	  private TextField t5name;
+
+	  @FXML
+	  private TextField t5year;
+
+	  @FXML
+	  private RadioButton t5male;
+
+	  @FXML
+	  private RadioButton t5female;
+
+	  @FXML
+	  private RadioButton t5imale;
+
+	  @FXML
+	  private RadioButton t5younger;
+
+	  @FXML
+	  private RadioButton t5ifemale;
+
+	  @FXML
+	  private RadioButton t5older;
+
+	  @FXML
+	  private Button dot5;
+  
     @FXML
     private Tab tabApp3;
 
@@ -194,8 +242,8 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
-    
-    /**
+  
+  /**
      * Task 1
      * A function to check the input of task 1
      * @return The message generated for invalid input
@@ -249,8 +297,8 @@ public class Controller {
     	return oReport;
     }
     
-    
-    /**
+  
+  /**
      * Task 1
      * A function to generate the result of task 1
      * @return The message that will be shown in the console
@@ -312,8 +360,8 @@ public class Controller {
     	return oReport;
     }
     
-    
-    /**
+  
+  /**
      * Task 1
      * To be triggered by the "REPORT" button on the Task 1 Tab
      * 
@@ -330,8 +378,8 @@ public class Controller {
     	textAreaConsole.setText(task1Result());
     }
     
-    
-    /**
+  
+  /**
      * Application 1
      * A function to check the input of App 1
      * @return The message generated for invalid input
@@ -393,8 +441,8 @@ public class Controller {
     	return oReport;
     }
     
-    
-    /**
+  
+  /**
      * Application 1
      * A function that will return the name of the given parent name, parent year of born, gender and a vintage year in App 1
      * @param iName The name of the parent
@@ -416,8 +464,8 @@ public class Controller {
     	return oName;
     }
     
-    
-    /**
+  
+  /**
      * Application 1
      * A function to generate the result of App 1
      * @return The message that will be shown in the console
@@ -442,8 +490,8 @@ public class Controller {
     	return oReport;
     }
     
-    
-    /**
+  
+  /**
      * Application 1
      * To be triggered by the "APPLICATION" button on the App 1 Tab
      * 
@@ -460,3 +508,40 @@ public class Controller {
     }
 }
 
+	@FXML
+	void report2() {
+		String oReport = Task2.check(t2name, t2startingyear, t2endingyear, t2m, t2f);
+		if (oReport.isEmpty() == false) {
+			oReport = "There are some invalid input, below is the summary.\n" + oReport;
+			textAreaConsole.setWrapText(true);
+			textAreaConsole.setText(oReport);
+			return;
+		}
+		Task2 task2 = new Task2(t2name, t2startingyear, t2endingyear, t2m, t2f);
+		oReport += String.format("%15s%15s%15s%15s\n", "Year", "Rank", "Count", "Percentage");
+		for (int i = task2.getend(); i >= task2.getstart(); i--) {
+			oReport += task2.rowdetail(i);
+		}
+		oReport += task2.summary();
+		textAreaConsole.setWrapText(true);
+		textAreaConsole.setText(oReport);
+		return;
+	}
+
+	@FXML
+	void t5() {
+		String oReport = Task5.check(t5name, t5year, t5male, t5female, t5imale, t5ifemale, t5younger, t5older);
+		if (oReport.isEmpty() == false) {
+			oReport = "There are some invalid input, below is the summary.\n" + oReport;
+			textAreaConsole.setWrapText(true);
+			textAreaConsole.setText(oReport);
+			return;
+		}
+		Task5 task5 = new Task5(t5name, t5year, t5male, t5female, t5imale, t5ifemale, t5younger, t5older);
+		String oname = task5.NK_T5Algorithm();
+		oReport += String.format("The recommanded names for compatible pairs is %s.", oname);
+		textAreaConsole.setWrapText(true);
+		textAreaConsole.setText(oReport);
+		return;
+	}
+}
