@@ -19,4 +19,5 @@ email: khlukab | github: ImCombo | dev branch: lkh_feature1
 Task 1 & Task 4
 
 Activity 1 URL: https://docs.google.com/document/d/1_2zPEU93FNGPCtt945bMJHsXLmalP0teWXyJVEPj_U0/edit
+
 Activity 2 Source code: https://docs.google.com/document/d/1BWhF708MlAJC9uClp69zC9gAh-eljOSxE93v85ksGaM/edit
