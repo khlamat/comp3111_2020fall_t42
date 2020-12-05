@@ -5,10 +5,13 @@ package comp3111.popnames;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+
+import java.lang.Math;
 
 public class Controller {
 
@@ -53,7 +56,7 @@ public class Controller {
 
     @FXML
     private Tab tabReport3;
-
+    
     @FXML
     private ToggleGroup T111;
 
@@ -65,6 +68,15 @@ public class Controller {
 
     @FXML
     private Tab tabApp3;
+    
+    @FXML
+    private ToggleGroup TApp3Gender1;
+    
+    @FXML
+    private ToggleGroup TApp3Gender2;
+    
+    @FXML
+    private ToggleGroup TApp3Preference;
 
     @FXML
     private TextArea textAreaConsole;
@@ -154,6 +166,223 @@ public class Controller {
     	textAreaConsole.setText(oReport);
     }
     
+    // Task Three
+    
+    @FXML
+    private RadioButton radiobuttonR3_M;
+    
+    @FXML
+    private RadioButton radiobuttonR3_F;
+    
+    @FXML
+    private TextField textfieldR3_Year1;
+    
+    @FXML
+    private TextField textfieldR3_Year2;
+    
+    @FXML
+    private TextField textfieldR3_TopN;
+    
+    @FXML
+    private Button buttonR3_REPORT;
+    
+    @FXML
+    void doR3REPORT() {
+    	String string_TopN = textfieldR3_TopN.getText();
+    	String string_Year1 = textfieldR3_Year1.getText();
+    	String string_Year2 = textfieldR3_Year2.getText();
+    	
+    	if (!string_TopN.matches("\\d+") || !string_Year1.matches("\\d+") || !string_Year2.matches("\\d+")) {
+    		textAreaConsole.setText("Please only enter numerical data.");
+    		return;
+    	}
+    	
+    	int topN = Integer.parseInt(textfieldR3_TopN.getText());
+    	int year1 = Integer.parseInt(textfieldR3_Year1.getText());
+    	int year2 = Integer.parseInt(textfieldR3_Year2.getText());
+    	
+    	String gender;
+    	if (radiobuttonR3_M.isSelected())
+    		gender = "M";
+    	else if (radiobuttonR3_F.isSelected())
+    		gender = "F";
+    	else {
+    		textAreaConsole.setText("Please specify a gender.");
+    		return;
+    	}
+
+    	if (topN < 1) {
+    		textAreaConsole.setText("Please enter a valid topN value.");
+    		return;
+    	}
+    	if (year1 >= year2 || year1 < 1880 || year2 > 2019) {
+    		textAreaConsole.setText("Please enter a valid range of years between 1880 and 2019 (inclusively).");
+    		return;
+    	}
+    	
+    	String[] names = new String[topN];
+    	boolean [] remainPopAllTheseYears = new boolean[topN];
+    	int [] lowestYears = new int[topN];
+    	int [] highestYears = new int[topN];
+    	
+    	for (int i = 0; i < topN; ++i) {
+    		names[i] = AnalyzeNames.getName(year1, i+1, gender);
+    		remainPopAllTheseYears[i] = true;
+    		lowestYears[i] = year1;
+    		highestYears[i] = year1;
+    	}
+    	for (int yr = year1 + 1; yr <= year2; ++yr) {
+    		for (int i = 0; i < topN; ++i) {
+    			if (remainPopAllTheseYears[i] == false) continue;
+    			
+    			int rank = AnalyzeNames.getRank(yr, names[i], gender);
+    			if (rank < 1 || rank > topN) {
+    				remainPopAllTheseYears[i] = false;
+    				continue;
+    			}
+    			
+    			if (rank < AnalyzeNames.getRank(highestYears[i], names[i], gender))
+    				highestYears[i] = yr;
+    			if (rank > AnalyzeNames.getRank(lowestYears[i], names[i], gender))
+    				lowestYears[i] = yr;
+    		}
+    	}
+    	
+    	int count = 0;
+    	for (int i = 0; i < topN; ++i)
+    		if (remainPopAllTheseYears[i] == true)
+    			count++;
+    	
+    	String oReport = "";
+    	oReport = String.format("%d names are found to be maintained at a high level of popularity within Top %d over the period from %d to %d.\n",count , topN, year1, year2);
+    	oReport += String.format("\nName         \tLowest Rank [in Year]\tHigest Rank [in Year]\tGross Trend\n\n");
+    	for (int i = 0; i < topN; ++i) {
+    		if (remainPopAllTheseYears[i] == true) {
+    			int lowestRank = AnalyzeNames.getRank(lowestYears[i], names[i], gender);
+    			int highestRank = AnalyzeNames.getRank(highestYears[i], names[i], gender);
+    			String grossTrend;
+    			if (lowestYears[i] < highestYears[i])
+    				grossTrend = "UP";
+    			else if (lowestYears[i] > highestYears[i])
+    				grossTrend = "DOWN";
+    			else
+    				grossTrend = "FLAT";
+    			oReport += String.format("%-13s\t%d [%d]\t\t%d [%d]\t\t%s\n", names[i], lowestRank, lowestYears[i], highestRank, highestYears[i], grossTrend);
+
+    		}
+    	}
+    	textAreaConsole.setText(oReport);
+    	
+    }
+    
+    @FXML
+    private TextField textfieldA3_iName;
+    
+    @FXML
+    private TextField textfieldA3_iYOB;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iGenderM;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iGenderF;
+    
+    @FXML
+    private TextField textfieldA3_iNameMate;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iGenderMateM;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iGenderMateF;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iPrefY;
+    
+    @FXML
+    private RadioButton radiobuttonA3_iPrefO;
+    
+    @FXML
+    private Button buttonA3_Submit;
+    
+    @FXML
+    void doApp3() {
+    	String iName = textfieldA3_iName.getText();
+    	String iNameMate = textfieldA3_iNameMate.getText();
+    	if (iName.isBlank() || iNameMate.isBlank()) {
+    		textAreaConsole.setText("Empty names are not accepted.");
+    		return;
+    	}
+    	
+    	if (iName.contains(" ") || iNameMate.contains(" ")) {
+    		textAreaConsole.setText("Names should not contain any space character.");
+    		return;
+    	}
+    	
+    	for (int i = 0; i < 10; ++i) {
+    		if (iName.contains(String.valueOf(i)) || iNameMate.contains(String.valueOf(i))) {
+    			textAreaConsole.setText("Names should not contain any number.");
+        		return;
+    		}
+    	}
+    	
+    	String string_iYOB = textfieldA3_iYOB.getText();
+    	if (!string_iYOB.matches("\\d+")) {
+    		textAreaConsole.setText("Please enter a VALID year of birth.");
+    		return;
+    	}
+    	
+    	int iYOB = Integer.parseInt(string_iYOB);
+    	if (iYOB < 1880 || iYOB > 2019) {
+    		textAreaConsole.setText("Please provide a year between 1880 and 2019 (inclusively).");
+    		return;
+    	}
+
+    	String iGender, iGenderMate;
+    	
+    	if (radiobuttonA3_iGenderM.isSelected())
+    		iGender = "M";
+    	else if (radiobuttonA3_iGenderF.isSelected())
+    		iGender = "F";
+    	else {
+    		textAreaConsole.setText("Please specify your gender.");
+    		return;
+    	}
+
+    	
+    	if (radiobuttonA3_iGenderMateM.isSelected())
+    		iGenderMate = "M";
+    	else if (radiobuttonA3_iGenderMateF.isSelected())
+    		iGenderMate = "F";
+    	else {
+    		textAreaConsole.setText("Please specify the gender of the other person.");
+    		return;
+    	}
+
+    	
+    	int oRank = AnalyzeNames.getRank(iYOB, iName, iGender);
+    	if (oRank == -1) oRank = 1;
+    	
+    	int oYOB;
+    	if (radiobuttonA3_iPrefY.isSelected())
+    		oYOB = iYOB - 1;
+    	else if (radiobuttonA3_iPrefO.isSelected())
+    		oYOB = iYOB + 1;
+    	else {
+    		textAreaConsole.setText("Please specify your preference for a younger or older soulmate.");
+    		return;
+    	}
+    	
+    	int oRankMate = AnalyzeNames.getRank(oYOB, iNameMate, iGenderMate);
+    	if (oRankMate == -1) oRankMate = 1;
+    	
+    	float diff = Math.abs(oRank-oRankMate); //convert from int to float
+    	float max = Math.max(oRank, oRankMate);
+    	float oScore = (1.0f - diff/max)*100.0f;
+    	int ooScore = Math.round(oScore);
+    	String oReport = String.format("You score %d%% for love matching!\n(0%%: Not Compatible; 100%%: Perfect Match)\n", ooScore);
+    	textAreaConsole.setText(oReport);
+    }
 
 }
 
